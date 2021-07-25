@@ -1,0 +1,1 @@
+[Nikita Romanov's JWD training notes](https://docs.google.com/document/d/16milYMLNbfXkZ1hK-5S60nb0CN1o2DlyvOQ7mT_uujI/edit?usp=sharing "Google docs")
