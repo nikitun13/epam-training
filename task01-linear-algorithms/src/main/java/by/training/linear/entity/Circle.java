@@ -1,4 +1,4 @@
-package by.epam.linear.entity;
+package by.training.linear.entity;
 
 import java.util.Objects;
 

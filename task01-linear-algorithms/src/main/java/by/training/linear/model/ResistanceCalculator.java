@@ -1,7 +1,7 @@
-package by.epam.linear.model;
+package by.training.linear.model;
 
-import by.epam.linear.entity.Resistor;
-import by.epam.linear.exception.InvalidResistorException;
+import by.training.linear.entity.Resistor;
+import by.training.linear.exception.InvalidResistorException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -37,7 +37,7 @@ public class ResistanceCalculator {
             }
             denominator += 1 / resistance;
         }
-        double result = 1 / denominator;
+        double result = 1 / denominator; // won't be zero
         logger.debug("result = {}", result);
         return result;
     }

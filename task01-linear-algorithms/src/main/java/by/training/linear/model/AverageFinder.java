@@ -1,4 +1,4 @@
-package by.epam.linear.model;
+package by.training.linear.model;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

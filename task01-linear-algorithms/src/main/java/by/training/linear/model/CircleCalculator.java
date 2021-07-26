@@ -1,7 +1,7 @@
-package by.epam.linear.model;
+package by.training.linear.model;
 
-import by.epam.linear.entity.Circle;
-import by.epam.linear.exception.InvalidCircleException;
+import by.training.linear.entity.Circle;
+import by.training.linear.exception.InvalidCircleException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

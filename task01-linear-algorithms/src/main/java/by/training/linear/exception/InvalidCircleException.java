@@ -1,4 +1,4 @@
-package by.epam.linear.exception;
+package by.training.linear.exception;
 
 public class InvalidCircleException extends RuntimeException {
 
