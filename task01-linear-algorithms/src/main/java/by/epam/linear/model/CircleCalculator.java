@@ -15,7 +15,7 @@ public class CircleCalculator {
      * 20. The circumference is known
      * Find the area of a circle bounded by this circumference.
      */
-    public double findCircleArea(Circle circle) {
+    public double calculateCircleArea(Circle circle) {
         logger.debug("received: {}", circle);
         Objects.requireNonNull(circle, "circle can't be null");
         double circumference = circle.getCircumference();
