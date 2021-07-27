@@ -23,7 +23,7 @@ public class ResistanceCalculator {
             return 0d; //returns 0 if there are no resistors
         }
         for (Resistor resistor : resistors) {
-            Objects.requireNonNull(resistor);
+            Objects.requireNonNull(resistor, "resistor inside list can't be null");
         }
 
         double[] resistanceArray = resistors.stream()
@@ -37,7 +37,7 @@ public class ResistanceCalculator {
             }
             denominator += 1 / resistance;
         }
-        double result = 1 / denominator; // won't be zero
+        double result = 1 / denominator; // won't be zero because of the checks that were before
         logger.debug("result = {}", result);
         return result;
     }
