@@ -12,7 +12,7 @@ public class CircleCalculator {
     private static final Logger logger = LogManager.getLogger(CircleCalculator.class);
 
     private static final int SECOND_POWER = 2;
-    private static final int PI_COEFFICIENT = 2;
+    private static final int PI_COEFFICIENT = 4;
 
     /*
      * 20. The circumference is known
