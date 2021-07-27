@@ -12,7 +12,7 @@ public class ResistanceCalculator {
 
     private static final Logger logger = LogManager.getLogger(ResistanceCalculator.class);
 
-    /*
+    /**
      * Three resistors R1, R2, and R3 are connected in parallel.
      * Find the connection resistance.
      */

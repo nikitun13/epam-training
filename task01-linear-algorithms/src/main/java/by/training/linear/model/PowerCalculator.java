@@ -7,7 +7,7 @@ public class PowerCalculator {
 
     private static final Logger logger = LogManager.getLogger(PowerCalculator.class);
 
-    /*
+    /**
      * 15. Write program, which prints first four powers of π.
      */
     public double powPi(double exponent) {

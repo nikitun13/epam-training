@@ -19,7 +19,7 @@ public class ExpressionCalculator {
     private static final int SECOND_POWER = 2;
     private static final int THIRD_POWER = 3;
 
-    /*
+    /**
      * 40. The value 'x' is given.
      * Get the values -2x + 3x^2 - 4x^3 and 1 + 2x + 3x^2 + 4x^3.
      * Take care of saving operations.
