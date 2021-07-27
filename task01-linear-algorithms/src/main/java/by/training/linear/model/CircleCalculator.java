@@ -11,6 +11,9 @@ public class CircleCalculator {
 
     private static final Logger logger = LogManager.getLogger(CircleCalculator.class);
 
+    private static final int SECOND_POWER = 2;
+    private static final int PI_COEFFICIENT = 2;
+
     /*
      * 20. The circumference is known
      * Find the area of a circle bounded by this circumference.
@@ -22,7 +25,8 @@ public class CircleCalculator {
         if (circumference < 0d) {
             throw new InvalidCircleException("circumference can't be less than 0");
         }
-        double result = Math.pow(circle.getCircumference(), 2) / (4 * Math.PI);
+        double result = Math.pow(circumference, SECOND_POWER)
+                / (PI_COEFFICIENT * Math.PI); // (circumference^2) / (4π)
         logger.debug("result = {}", result);
         return result;
     }
