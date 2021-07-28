@@ -16,7 +16,7 @@
         </Console>
 
         <RollingFile name="FileRolling" fileName="${LOG_DIR}/app.log" append="true"
-                     filePattern="${LOG_DIR}/${date:yyyy-MM-dd}/%d{yyyy-MM-dd_HH-mm}_%i.txt">
+                     filePattern="${LOG_DIR}/${date:yyyy-MM-dd}/%d{yyyy-MM-dd_HH-mm}_%i.log">
             <PatternLayout pattern="${pattern_file}"/>
             <Policies>
                 <SizeBasedTriggeringPolicy size="2 MB"/>
