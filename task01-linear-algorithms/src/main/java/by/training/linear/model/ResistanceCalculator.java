@@ -33,7 +33,7 @@ public class ResistanceCalculator {
         double denominator = 0d;
         for (Double resistance : resistanceArray) {
             if (resistance <= 0d) {
-                throw new InvalidResistorException("resistance can't be 0 or less");
+                throw new InvalidResistorException("resistance can't be " + resistance);
             }
             denominator += 1 / resistance;
         }

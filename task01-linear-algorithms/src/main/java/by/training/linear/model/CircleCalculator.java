@@ -22,8 +22,8 @@ public class CircleCalculator {
         logger.debug("received: {}", circle);
         Objects.requireNonNull(circle, "circle can't be null");
         double circumference = circle.getCircumference();
-        if (circumference < 0d) {
-            throw new InvalidCircleException("circumference can't be less than 0");
+        if (circumference <= 0d) {
+            throw new InvalidCircleException("Circumference can't be: " + circumference);
         }
         double result = Math.pow(circumference, SECOND_POWER)
                 / (PI_COEFFICIENT * Math.PI); // (circumference^2) / (4π)
