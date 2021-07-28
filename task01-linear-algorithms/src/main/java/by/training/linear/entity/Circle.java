@@ -6,7 +6,7 @@ public class Circle {
 
     private double circumference;
 
-    public Circle(int circumference) {
+    public Circle(double circumference) {
         this.circumference = circumference;
     }
 
