@@ -20,6 +20,7 @@ public class ResistanceCalculator {
         logger.debug("received: {}", resistors);
         Objects.requireNonNull(resistors, "list of resistors can't be null");
         if (resistors.isEmpty()) {
+            logger.debug("result = 0.0");
             return 0d; //returns 0 if there are no resistors
         }
         for (Resistor resistor : resistors) {
