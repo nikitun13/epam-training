@@ -4,6 +4,11 @@ import by.learning.branching.service.IntegerComparatorService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * The class {@code IntegerComparatorServiceImpl} is a class that implements {@link IntegerComparatorService}.
+ *
+ * @author Nikita Romanov
+ */
 public class IntegerComparatorServiceImpl implements IntegerComparatorService {
 
     private static final Logger logger = LogManager.getLogger(IntegerComparatorServiceImpl.class);
