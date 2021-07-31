@@ -1,7 +1,7 @@
-package by.learning.branching.service.factory;
+package by.training.branching.service.factory;
 
-import by.learning.branching.service.IntegerComparatorService;
-import by.learning.branching.service.impl.IntegerComparatorServiceImpl;
+import by.training.branching.service.IntegerComparatorService;
+import by.training.branching.service.impl.IntegerComparatorServiceImpl;
 
 /**
  * The class {@code ServiceFactory} is utility class that provides the implementation of services.

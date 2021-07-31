@@ -1,4 +1,4 @@
-package by.learning.branching.service.impl;
+package by.training.branching.service.impl;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;

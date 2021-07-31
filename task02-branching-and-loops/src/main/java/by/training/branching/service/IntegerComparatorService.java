@@ -1,4 +1,4 @@
-package by.learning.branching.service;
+package by.training.branching.service;
 
 /**
  * Describes the interface of a service that provides an integer comparison.

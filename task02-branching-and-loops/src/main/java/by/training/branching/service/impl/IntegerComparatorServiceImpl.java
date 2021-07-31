@@ -1,6 +1,6 @@
-package by.learning.branching.service.impl;
+package by.training.branching.service.impl;
 
-import by.learning.branching.service.IntegerComparatorService;
+import by.training.branching.service.IntegerComparatorService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
