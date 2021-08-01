@@ -1,6 +1,8 @@
 package by.training.branching.service.factory;
 
+import by.training.branching.service.FunctionCalculatorService;
 import by.training.branching.service.IntegerComparatorService;
+import by.training.branching.service.impl.FunctionCalculatorServiceImpl;
 import by.training.branching.service.impl.IntegerComparatorServiceImpl;
 
 /**
@@ -13,6 +15,7 @@ public final class ServiceFactory {
     private static final ServiceFactory INSTANCE = new ServiceFactory();
 
     private final IntegerComparatorService integerComparatorService = new IntegerComparatorServiceImpl();
+    private final FunctionCalculatorService functionCalculatorService = new FunctionCalculatorServiceImpl();
 
     private ServiceFactory() {
     }
@@ -23,5 +26,9 @@ public final class ServiceFactory {
 
     public IntegerComparatorService getIntegerComparatorService() {
         return integerComparatorService;
+    }
+
+    public FunctionCalculatorService getFunctionCalculatorService() {
+        return functionCalculatorService;
     }
 }
