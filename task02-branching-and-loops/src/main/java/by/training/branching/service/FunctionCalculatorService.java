@@ -14,5 +14,5 @@ public interface FunctionCalculatorService {
      * @return function calculation result.
      * @throws ServiceException if the input value is not included in the set of values of the function.
      */
-    double calculate(int x);
+    double calculate(double x);
 }

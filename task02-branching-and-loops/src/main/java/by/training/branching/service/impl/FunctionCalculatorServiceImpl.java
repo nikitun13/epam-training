@@ -12,7 +12,7 @@ import by.training.branching.service.FunctionCalculatorService;
 public class FunctionCalculatorServiceImpl implements FunctionCalculatorService {
 
     @Override
-    public double calculate(int x) {
+    public double calculate(double x) {
         return 0; // stub
     }
 }
