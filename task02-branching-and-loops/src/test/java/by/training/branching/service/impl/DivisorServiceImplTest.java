@@ -67,7 +67,7 @@ public class DivisorServiceImplTest {
                 {-1, new Integer[]{3, 6, null}},
                 {32, new Integer[]{null, 0, 2, 5, 6, null}},
                 {18, new Integer[]{-2, null, 2, 5, null, -9}},
-                {-123, new Integer[]{-1, -2, -3}},
+                {-123, new Integer[]{-1, null, null}},
                 {-4, new Integer[]{-2, -4, null, 2, 18}},
                 {-5, new Integer[]{-21, -5, 5, null, 17}},
                 {13, new Integer[]{-21, -5, 5, 3, null}},
