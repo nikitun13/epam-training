@@ -17,7 +17,7 @@ public interface DivisorService {
      * @param numbers list of numbers
      * @return list of numbers that can be divided by a {@code divisor}.
      * @throws ServiceException     if {@code divisor} equals {@code 0}.
-     * @throws NullPointerException if {@code numbers} is null.
+     * @throws NullPointerException if {@code numbers} is null or element inside {@code numbers} is null.
      */
     List<Integer> findDivisibleNumbers(int divisor, List<Integer> numbers);
 }
