@@ -6,8 +6,10 @@ import org.apache.logging.log4j.Logger;
 
 /**
  * The class {@code FunctionCalculatorServiceImpl} is a class that implements {@link FunctionCalculatorService}.
- * <ul><li>If {@code x <= 13}, calculates function {@code F(x) = -x^3 + 9}.</li>
- * <li>If {@code x > 13}, calculates {@code F(x) = -(3 / (x + 1)}.</li></ul>
+ * <ul>
+ *     <li>If {@code x <= 13}, calculates function {@code F(x) = -x^3 + 9}.</li>
+ *     <li>If {@code x > 13}, calculates {@code F(x) = -(3 / (x + 1)}.</li>
+ * </ul>
  *
  * @author Nikita Romanov
  */
