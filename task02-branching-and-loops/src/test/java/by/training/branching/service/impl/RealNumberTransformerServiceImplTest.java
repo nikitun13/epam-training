@@ -26,8 +26,8 @@ public class RealNumberTransformerServiceImplTest {
                 {new double[]{0.25, 0.75}, List.of(0.5, 0.375)},
                 {new double[]{-0.75, 0.25}, List.of(-0.25, -0.375)},
                 {new double[]{0.25, -0.75}, List.of(-0.375, -0.25)},
-                {new double[]{-0.25, -0.75}, List.of(-0.5, 0.375)},
-                {new double[]{-0.75, -0.25}, List.of(0.375, -0.5)}
+                {new double[]{-0.25, -0.75}, List.of(0.375, -0.5)},
+                {new double[]{-0.75, -0.25}, List.of(-0.5, 0.375)}
         };
     }
 
