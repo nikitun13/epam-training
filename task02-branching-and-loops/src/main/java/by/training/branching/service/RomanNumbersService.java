@@ -11,6 +11,7 @@ public interface RomanNumbersService {
 
     /**
      * Converts roman number to arabic number.
+     * Maximum value is {@code 3999} ({@code MMMCMXCIX}).
      *
      * @param romanNumber roman number.
      * @return arabic value of a roman number.
