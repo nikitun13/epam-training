@@ -26,4 +26,9 @@ public class DivisorServiceImpl implements DivisorService {
         logger.debug("result: {}", result);
         return result;
     }
+
+    @Override
+    public List<Integer> findAllNumbersDivisibleByTheirDigits(int bound) {
+        return null; // stub
+    }
 }
