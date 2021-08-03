@@ -21,7 +21,7 @@ public class RomanNumbersServiceImplTest {
 
     @DataProvider(name = "positiveDataForFromRoman")
     public static Iterator<Object[]> createPositiveDataForFromRoman() throws IOException {
-        Path path = Path.of("src", "test", "java", "resources", "inputDataForRomanNumbersServiceTest.txt");
+        Path path = Path.of("src", "test", "resources", "inputDataForRomanNumbersServiceTest.txt");
         return Files.lines(path)
                 .map(line -> line.split("\\s+"))
                 .map(array -> new Object[]{new RomanInteger(array[1]), Integer.parseInt(array[0])})
