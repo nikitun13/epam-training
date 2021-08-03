@@ -26,7 +26,7 @@ public interface DivisorService {
      *
      * @param bound inclusive bound of numbers.
      * @return list of numbers that are divisible by their digits.
-     * @throws ServiceException if bound is less or equal {@code 0}.
+     * @throws ServiceException if {@code bound} is less or equal {@code 0}.
      */
     List<Integer> findAllNumbersDivisibleByTheirDigits(int bound);
 }

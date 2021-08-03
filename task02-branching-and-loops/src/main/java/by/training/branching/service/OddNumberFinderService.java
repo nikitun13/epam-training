@@ -15,7 +15,7 @@ public interface OddNumberFinderService {
      * @param lowerBound lower inclusive bound of range.
      * @param upperBound upper inclusive bound of range.
      * @return list of odd numbers.
-     * @throws ServiceException if the lower bound is greater than the upper bound.
+     * @throws ServiceException if the {@code lowerBound} is greater than the {@code upperBound}.
      */
     List<Integer> findOddNumbersInRange(int lowerBound, int upperBound);
 }
