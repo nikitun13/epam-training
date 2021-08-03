@@ -58,7 +58,25 @@ public class RomanNumbersServiceImplTest {
                 {new RomanInteger("MMMDD")},
                 {new RomanInteger("MMMMDCL")},
                 {new RomanInteger("CCCC")},
-                {new RomanInteger("FFF")}
+                {new RomanInteger("FFF")},
+                {new RomanInteger("x")},
+                {new RomanInteger("i")},
+                {new RomanInteger("m")},
+                {new RomanInteger("v")},
+                {new RomanInteger("c")},
+                {new RomanInteger("d")},
+                {new RomanInteger("xi")},
+                {new RomanInteger("xvi")},
+                {new RomanInteger("xxx")},
+                {new RomanInteger("mmm")},
+                {new RomanInteger("mmmm")},
+                {new RomanInteger("mmmcmxcix")},
+                {new RomanInteger("mmMcmXcIx")},
+                {new RomanInteger("MMMcmXcIx")},
+                {new RomanInteger("MMMCMXCIx")},
+                {new RomanInteger("MMMCmXCIX")},
+                {new RomanInteger("MMmCMXCIX")},
+                {new RomanInteger("MMmCMXcIx")}
         };
     }
 
