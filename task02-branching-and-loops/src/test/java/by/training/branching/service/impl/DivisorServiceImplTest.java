@@ -75,12 +75,43 @@ public class DivisorServiceImplTest {
         };
     }
 
+    @DataProvider(name = "positiveDataForFindAllNumbersDivisibleByTheirDigits")
+    public static Object[][] createPositiveDataForFindAllNumbersDivisibleByTheirDigits() {
+        return new Object[][]{
+                {1, List.of(1)},
+                {2, List.of(1, 2)},
+                {5, List.of(1, 2, 3, 4, 5)},
+                {9, List.of(1, 2, 3, 4, 5, 6, 7, 8, 9)},
+                {10, List.of(1, 2, 3, 4, 5, 6, 7, 8, 9)},
+                {11, List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 11)},
+                {12, List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12)},
+                {13, List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12)},
+                {14, List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12)},
+                {15, List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 15)},
+                {20, List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 15)},
+                {25, List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 15, 22, 24)},
+                {30, List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 15, 22, 24)},
+                {40, List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 15, 22, 24, 33, 36)},
+                {50, List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 15, 22, 24, 33, 36, 44, 48)}
+        };
+    }
+
+    @DataProvider(name = "negativeDataForFindAllNumbersDivisibleByTheirDigits")
+    public static Object[][] createNegativeDataForFindAllNumbersDivisibleByTheirDigits() {
+        return new Object[][]{
+                {0, null},
+                {-1, null},
+                {-15, null},
+                {-50, null}
+        };
+    }
+
     @BeforeClass
     public void setUp() {
         service = new DivisorServiceImpl();
     }
 
-    @Test(description = "test positive scenario for FindDivisibleNumbers method",
+    @Test(description = "test positive scenario for findDivisibleNumbers method",
             dataProvider = "positiveDataForFindDivisibleNumbers")
     @SuppressWarnings("unchecked")
     public void testPositiveScenarioFindDivisibleNumbers(Object[] input, List<Integer> expected) {
@@ -94,7 +125,7 @@ public class DivisorServiceImplTest {
         );
     }
 
-    @Test(description = "test negative scenario for FindDivisibleNumbers method",
+    @Test(description = "test negative scenario for findDivisibleNumbers method",
             dataProvider = "negativeDataForFindDivisibleNumbers",
             expectedExceptions = ServiceException.class)
     public void testNegativeScenarioFindDivisibleNumbers(int divisor, List<Integer> numbers) {
@@ -105,7 +136,7 @@ public class DivisorServiceImplTest {
         );
     }
 
-    @Test(description = "test list is null scenario for FindDivisibleNumbers method",
+    @Test(description = "test list is null scenario for findDivisibleNumbers method",
             expectedExceptions = NullPointerException.class)
     public void testListIsNullScenarioFindDivisibleNumbers() {
         service.findDivisibleNumbers(1, null);
@@ -115,7 +146,7 @@ public class DivisorServiceImplTest {
         );
     }
 
-    @Test(description = "test null inside the list scenario for FindDivisibleNumbers method",
+    @Test(description = "test null inside the list scenario for findDivisibleNumbers method",
             dataProvider = "nullDataInsideTheListForFindDivisibleNumbers",
             expectedExceptions = NullPointerException.class)
     public void testNullInsideTheListScenarioFindDivisibleNumbers(int divisor, Integer[] array) {
@@ -123,6 +154,26 @@ public class DivisorServiceImplTest {
         service.findDivisibleNumbers(divisor, numbers);
         fail(String.format("Must throw %s for null inside the list %s.",
                         NullPointerException.class.getName(), numbers
+                )
+        );
+    }
+
+    @Test(description = "test positive scenario for findAllNumbersDivisibleByTheirDigits method",
+            dataProvider = "positiveDataForFindAllNumbersDivisibleByTheirDigits")
+    public void testPositiveScenarioFindAllNumbersDivisibleByTheirDigits(int bound, List<Integer> expected) {
+        List<Integer> actual = service.findAllNumbersDivisibleByTheirDigits(bound);
+        assertEquals(actual, expected,
+                String.format("must be %s for bound %d", expected, bound)
+        );
+    }
+
+    @Test(description = "test negative scenario for findAllNumbersDivisibleByTheirDigits method",
+            dataProvider = "negativeDataForFindAllNumbersDivisibleByTheirDigits",
+            expectedExceptions = ServiceException.class)
+    public void testNegativeScenarioFindAllNumbersDivisibleByTheirDigits(int bound, Object stub) {
+        service.findAllNumbersDivisibleByTheirDigits(bound);
+        fail(String.format("Must throw %s for bound %d.",
+                        ServiceException.class.getName(), bound
                 )
         );
     }
