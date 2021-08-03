@@ -15,9 +15,18 @@ public interface DivisorService {
      *
      * @param divisor divisor of numbers
      * @param numbers list of numbers
-     * @return list of numbers that can be divided by a {@code divisor}.
+     * @return list of numbers that can be divided evenly by a {@code divisor}.
      * @throws ServiceException     if {@code divisor} equals {@code 0}.
      * @throws NullPointerException if {@code numbers} is null or element inside {@code numbers} is null.
      */
     List<Integer> findDivisibleNumbers(int divisor, List<Integer> numbers);
+
+    /**
+     * Finds all numbers not exceeding {@code bound} that are evenly divisible by all of their digits.
+     *
+     * @param bound inclusive bound of numbers.
+     * @return list of numbers that are divisible by their digits.
+     * @throws ServiceException if bound is less or equal {@code 0}.
+     */
+    List<Integer> findAllNumbersDivisibleByTheirDigits(int bound);
 }
