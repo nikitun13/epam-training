@@ -38,6 +38,8 @@ public class RomanInteger {
 
     @Override
     public String toString() {
-        return value;
+        return "RomanInteger{" +
+                "value='" + value + '\'' +
+                '}';
     }
 }
