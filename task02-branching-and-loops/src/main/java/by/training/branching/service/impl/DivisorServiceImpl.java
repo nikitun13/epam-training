@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Stream;
 
 public class DivisorServiceImpl implements DivisorService {
 
@@ -29,6 +30,24 @@ public class DivisorServiceImpl implements DivisorService {
 
     @Override
     public List<Integer> findAllNumbersDivisibleByTheirDigits(int bound) {
-        return null; // stub
+        logger.debug("received bound: {}", bound);
+        if (bound <= 0) {
+            throw new ServiceException("bound can't be 0 or less");
+        }
+        List<Integer> result = Stream.iterate(1, integer -> integer <= bound, integer -> integer += 1)
+                .filter(DivisorServiceImpl::isDivisibleByOwnDigits)
+                .toList();
+        logger.debug("result: {}", result);
+        return result;
+    }
+
+    private static boolean isDivisibleByOwnDigits(Integer number) {
+        String stringNumber = number.toString();
+        int[] result = stringNumber.chars()
+                .map(codePoint -> Character.digit(codePoint, 10))
+                .filter(digit -> digit != 0)
+                .filter(digit -> number % digit == 0)
+                .toArray();
+        return stringNumber.length() == result.length;
     }
 }
