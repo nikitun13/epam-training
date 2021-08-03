@@ -9,6 +9,11 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Stream;
 
+/**
+ * The class {@code DivisorServiceImpl} is a class that implements {@link DivisorService}.
+ *
+ * @author Nikita Romanov
+ */
 public class DivisorServiceImpl implements DivisorService {
 
     private static final Logger logger = LogManager.getLogger(DivisorServiceImpl.class);

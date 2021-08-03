@@ -8,6 +8,11 @@ import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The class {@code OddNumberFinderServiceImpl} is a class that implements {@link OddNumberFinderService}.
+ *
+ * @author Nikita Romanov
+ */
 public class OddNumberFinderServiceImpl implements OddNumberFinderService {
 
     private static final Logger logger = LogManager.getLogger(OddNumberFinderServiceImpl.class);
