@@ -8,13 +8,13 @@ package by.training.branching.service;
 public interface NumberSeriesService {
 
     /**
-     * Calculates sum of powers of two from 0 up to {@code power}.
+     * Calculates sum of powers of two from 0 up to {@code lastPower}.
      *
-     * @param power the last power for calculation inclusive.
+     * @param lastPower the last lastPower for calculation inclusive.
      * @return sum of powers of two.
-     * @throws ServiceException if {@code power} is less than 0.
+     * @throws ServiceException if {@code lastPower} is less than 0.
      */
-    long calculatePowersOfTwo(int power);
+    long calculatePowersOfTwo(int lastPower);
 
     /**
      * Calculates a series until the next element is not greater than {@code e} or equal to {@code e} inclusive.
