@@ -14,7 +14,7 @@ public interface NumberSeriesService {
      * @return sum of powers of two.
      * @throws ServiceException if {@code lastPower} is negative.
      */
-    long calculatePowersOfTwo(int lastPower);
+    long calculateSumOfPowersOfTwo(int lastPower);
 
     /**
      * Calculates a series until the next element is not greater than {@code e} or equal to {@code e} inclusive.

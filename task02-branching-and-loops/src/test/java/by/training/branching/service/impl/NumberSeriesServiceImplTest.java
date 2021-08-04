@@ -11,8 +11,8 @@ public class NumberSeriesServiceImplTest {
 
     private static final double DELTA = 0.00001;
 
-    @DataProvider(name = "positiveDataForCalculatePowersOfTwo")
-    public static Object[][] createPositiveDataForCalculatePowersOfTwo() {
+    @DataProvider(name = "positiveDataForCalculateSumOfPowersOfTwo")
+    public static Object[][] createPositiveDataForCalculateSumOfPowersOfTwo() {
         return new Object[][]{
                 {0, 1L},
                 {1, 3L},
@@ -32,8 +32,8 @@ public class NumberSeriesServiceImplTest {
         };
     }
 
-    @DataProvider(name = "negativeDataForCalculatePowersOfTwo")
-    public static Object[][] createNegativeDataForCalculatePowersOfTwo() {
+    @DataProvider(name = "negativeDataForCalculateSumOfPowersOfTwo")
+    public static Object[][] createNegativeDataForCalculateSumOfPowersOfTwo() {
         return new Object[][]{
                 {-1},
                 {-2},
@@ -89,19 +89,19 @@ public class NumberSeriesServiceImplTest {
     }
 
     @Test(description = "test positive scenario for calculatePowersOfTwo method",
-            dataProvider = "positiveDataForCalculatePowersOfTwo")
-    public void testPositiveScenarioCalculatePowersOfTwo(int lastPower, long expected) {
-        long actual = service.calculatePowersOfTwo(lastPower);
+            dataProvider = "positiveDataForCalculateSumOfPowersOfTwo")
+    public void testPositiveScenarioCalculateSumOfPowersOfTwo(int lastPower, long expected) {
+        long actual = service.calculateSumOfPowersOfTwo(lastPower);
         assertEquals(actual, expected,
                 String.format("sum must be %d for last power %d", expected, lastPower)
         );
     }
 
     @Test(description = "test negative scenario for calculatePowersOfTwo method",
-            dataProvider = "negativeDataForCalculatePowersOfTwo",
+            dataProvider = "negativeDataForCalculateSumOfPowersOfTwo",
             expectedExceptions = ServiceException.class)
-    public void testNegativeScenarioCalculatePowersOfTwo(int lastPower) {
-        service.calculatePowersOfTwo(lastPower);
+    public void testNegativeScenarioCalculateSumOfPowersOfTwo(int lastPower) {
+        service.calculateSumOfPowersOfTwo(lastPower);
         fail(String.format("must throw %s for last power %d on input",
                         ServiceException.class.getName(), lastPower
                 )
