@@ -12,7 +12,7 @@ public interface NumberSeriesService {
      *
      * @param lastPower the last lastPower for calculation inclusive.
      * @return sum of powers of two.
-     * @throws ServiceException if {@code lastPower} is less than 0.
+     * @throws ServiceException if {@code lastPower} is negative.
      */
     long calculatePowersOfTwo(int lastPower);
 
@@ -21,7 +21,7 @@ public interface NumberSeriesService {
      *
      * @param e the min value of the absolute value of the last member of the series.
      * @return sum of the series.
-     * @throws ServiceException if {@code e} value is greater than any of the absolute values of the members of the series.
+     * @throws ServiceException if {@code e} is negative or equal 0.
      */
     double calculateNumberSeries(double e);
 }
