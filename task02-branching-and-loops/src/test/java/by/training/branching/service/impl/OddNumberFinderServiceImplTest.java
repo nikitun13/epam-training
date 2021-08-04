@@ -9,34 +9,31 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.fail;
 
-import java.util.Collections;
-import java.util.List;
-
 public class OddNumberFinderServiceImplTest {
 
     private OddNumberFinderServiceImpl service;
 
-    @DataProvider(name = "positiveDataForFindOddNumbersInRange")
-    public static Object[][] createPositiveDataForFindOddNumbersInRange() {
+    @DataProvider(name = "positiveDataForFindSumOfOddNumbersInRange")
+    public static Object[][] createPositiveDataForFindSumOfOddNumbersInRange() {
         return new Object[][]{
-                {new int[]{0, 1}, List.of(1)},
-                {new int[]{-1, 1}, List.of(-1, 1)},
-                {new int[]{-1, 2}, List.of(-1, 1)},
-                {new int[]{-1, 0}, List.of(-1)},
-                {new int[]{-5, -1}, List.of(-5, -3, -1)},
-                {new int[]{1, 5}, List.of(1, 3, 5)},
-                {new int[]{-5, 5}, List.of(-5, -3, -1, 1, 3, 5)},
-                {new int[]{1, 30}, List.of(1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29)},
-                {new int[]{0, 0}, Collections.emptyList()},
-                {new int[]{2, 2}, Collections.emptyList()},
-                {new int[]{-2, -2}, Collections.emptyList()},
-                {new int[]{5, 5}, List.of(5)},
-                {new int[]{-5, -5}, List.of(-5)}
+                {new int[]{0, 1}, 1L},
+                {new int[]{-1, 1}, 0L},
+                {new int[]{-1, 2}, 0L},
+                {new int[]{-1, 0}, -1L},
+                {new int[]{-5, -1}, -9L},
+                {new int[]{1, 5}, 9L},
+                {new int[]{-5, 5}, 0L},
+                {new int[]{1, 30}, 225L},
+                {new int[]{0, 0}, 0L},
+                {new int[]{2, 2}, 0L},
+                {new int[]{-2, -2}, 0L},
+                {new int[]{5, 5}, 5L},
+                {new int[]{-5, -5}, -5L}
         };
     }
 
-    @DataProvider(name = "negativeDataForFindOddNumbersInRange")
-    public static Object[][] createNegativeDataForFindOddNumbersInRange() {
+    @DataProvider(name = "negativeDataForFindSumOfOddNumbersInRange")
+    public static Object[][] createNegativeDataForFindSumOfOddNumbersInRange() {
         return new Object[][]{
                 {3, 2},
                 {1, -1},
@@ -52,25 +49,25 @@ public class OddNumberFinderServiceImplTest {
         service = new OddNumberFinderServiceImpl();
     }
 
-    @Test(description = "test positive scenario for findOddNumbersInRange method",
-            dataProvider = "positiveDataForFindOddNumbersInRange")
-    public void testPositiveScenarioFindOddNumbersInRange(int[] range, List<Integer> expected) {
+    @Test(description = "test positive scenario for findSumOfOddNumbersInRange method",
+            dataProvider = "positiveDataForFindSumOfOddNumbersInRange")
+    public void testPositiveScenarioFindSumOfOddNumbersInRange(int[] range, long expected) {
         int lowerBound = range[0];
         int upperBound = range[1];
-        List<Integer> actual = service.findOddNumbersInRange(lowerBound, upperBound);
+        long actual = service.findSumOfOddNumbersInRange(lowerBound, upperBound);
         assertEquals(actual, expected,
-                String.format("Must be %s for lower bound %d and upper bound %d",
+                String.format("sum must be %d for lower bound %d and upper bound %d",
                         expected, lowerBound, upperBound
                 )
         );
     }
 
-    @Test(description = "test negative scenario for findOddNumbersInRange method",
-            dataProvider = "negativeDataForFindOddNumbersInRange",
+    @Test(description = "test negative scenario for findSumOfOddNumbersInRange method",
+            dataProvider = "negativeDataForFindSumOfOddNumbersInRange",
             expectedExceptions = ServiceException.class)
-    public void testNegativeScenarioFindOddNumbersInRange(int lowerBound, int upperBound) {
-        service.findOddNumbersInRange(lowerBound, upperBound);
-        fail(String.format("Must throw %s for lower bound %d and upper bound %d",
+    public void testNegativeScenarioFindSumOfOddNumbersInRange(int lowerBound, int upperBound) {
+        service.findSumOfOddNumbersInRange(lowerBound, upperBound);
+        fail(String.format("must throw %s for lower bound %d and upper bound %d",
                 ServiceException.class.getName(), lowerBound, upperBound
         ));
     }
