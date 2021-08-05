@@ -27,6 +27,7 @@ public class UnknownCommand implements Command {
             unknownCommandResult.setMessage(TextManager.getText("error.unknownCommand"));
         }
         logger.error("unknown command");
+        logger.debug("result: {}", unknownCommandResult);
         return unknownCommandResult;
     }
 }
