@@ -43,6 +43,7 @@ public class ControllerImpl implements Controller {
                 continue;
             }
             request = transformRequest(request);
+            logger.debug("transformed request: {}", request);
             responseHandler(request);
         }
         logger.info("Exiting an infinite loop");
