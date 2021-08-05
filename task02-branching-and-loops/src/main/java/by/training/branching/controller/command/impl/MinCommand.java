@@ -66,8 +66,15 @@ public class MinCommand implements Command {
     }
 
     private boolean isValidParams(String[] params) {
-        boolean firstParam = params[0].matches(INT_REGEX);
-        boolean secondParam = params[1].matches(INT_REGEX);
-        return firstParam && secondParam;
+        for (String param : params) {
+            if (!isInteger(param)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean isInteger(String param) {
+        return param.matches(INT_REGEX);
     }
 }
