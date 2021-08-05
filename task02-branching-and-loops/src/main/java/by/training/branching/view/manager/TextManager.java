@@ -1,5 +1,6 @@
 package by.training.branching.view.manager;
 
+import java.text.NumberFormat;
 import java.util.ResourceBundle;
 
 /**
@@ -7,14 +8,18 @@ import java.util.ResourceBundle;
  * that provides text from a {@code ResourceBundle} that contains in {@link Language}.
  * Also changes the language of the application.
  * Delegates execution of methods to {@link ResourceBundle}.
+ * Contains {@link NumberFormat} for formatting numbers.
  *
  * @author Nikita Romanov
  * @see ResourceBundle
  * @see Language
+ * @see NumberFormat
  */
 public final class TextManager {
 
     private static ResourceBundle currentBundle = Language.EN.getBundle();
+    private static NumberFormat currentNumberFormat =
+            NumberFormat.getInstance(currentBundle.getLocale());
 
     private TextManager() {
     }
@@ -52,5 +57,10 @@ public final class TextManager {
      */
     public static void setLanguage(Language language) {
         currentBundle = language.getBundle();
+        currentNumberFormat = NumberFormat.getInstance(currentBundle.getLocale());
+    }
+
+    public static NumberFormat getCurrentNumberFormat() {
+        return currentNumberFormat;
     }
 }
