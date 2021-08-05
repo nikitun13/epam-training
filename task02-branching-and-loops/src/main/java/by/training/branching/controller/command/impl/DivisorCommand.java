@@ -36,10 +36,12 @@ public class DivisorCommand implements Command {
         logger.debug("received params: {}", paramsLine);
         if (paramsLine.isBlank()) {
             logger.error("Invalid number of parameters");
-            return new CommandResult(
+            CommandResult result = new CommandResult(
                     CommandStatus.ERROR,
                     TextManager.getText("error.invalidNumberOfParameters")
             );
+            logger.debug("result: {}", result);
+            return result;
         }
         CommandResult result;
         String[] params = splitParams(paramsLine);
