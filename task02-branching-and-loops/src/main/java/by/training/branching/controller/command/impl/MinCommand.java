@@ -22,7 +22,7 @@ public class MinCommand implements Command {
 
     private static final Logger logger = LogManager.getLogger(MinCommand.class);
 
-    private static final String INT_REGEX = "\\d+";
+    private static final String INT_REGEX = "[-+]?\\d+";
 
     private final IntegerComparatorService service =
             ServiceFactory.getInstance().getIntegerComparatorService();
