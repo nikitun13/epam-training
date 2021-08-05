@@ -29,7 +29,7 @@ public class ChangeLanguageCommand implements Command {
         String[] params = splitParams(paramsLine);
         String arrayStatus = Arrays.toString(params);
         logger.debug("split params: {}", arrayStatus);
-        if (isValidNumberOfParams(params)) {
+        if (!paramsLine.isBlank() && isValidNumberOfParams(params)) {
             String langKey = params[0].toUpperCase();
             if (isValidParamLang(langKey)) {
                 TextManager.setLanguage(Language.valueOf(langKey));
