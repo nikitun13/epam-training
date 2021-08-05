@@ -18,6 +18,7 @@ public class ControllerImpl implements Controller {
 
     private static final Logger logger = LogManager.getLogger(ControllerImpl.class);
 
+    private static final String SPACES_REGEX = "\\s+";
     private static final String DELIMITER = " ";
     private static final String EMPTY_PARAMETERS_LINE = "";
     private static final String INPUT_ICON = ">";
@@ -41,7 +42,8 @@ public class ControllerImpl implements Controller {
             if (request.isBlank()) {
                 continue;
             }
-            responseHandler(request.toLowerCase());
+            request = transformRequest(request);
+            responseHandler(request);
         }
         logger.info("Exiting an infinite loop");
     }
@@ -53,6 +55,10 @@ public class ControllerImpl implements Controller {
         logger.debug("user typed: {}", lang);
         executeCommand(CommandProvider.CHANGE_LANGUAGE_COMMAND + DELIMITER + lang);
         view.println(TextManager.getText("menu.help"));
+    }
+
+    private String transformRequest(String request) {
+        return request.trim().replaceAll(SPACES_REGEX, DELIMITER).toLowerCase();
     }
 
     private void responseHandler(String request) {

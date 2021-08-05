@@ -25,7 +25,7 @@ public class ChangeLanguageCommand implements Command {
     @Override
     public CommandResult execute(String paramsLine) {
         logger.debug("received params: {}", paramsLine);
-        String[] params = paramsLine.split(Command.DELIMITER_REGEX);
+        String[] params = paramsLine.split(Command.DELIMITER);
         String arrayStatus = Arrays.toString(params);
         logger.debug("split params: {}", arrayStatus);
         CommandResult result;
@@ -35,7 +35,7 @@ public class ChangeLanguageCommand implements Command {
                     .map(Language::toString)
                     .toList();
             if (list.contains(langKey)) {
-                TextManager.setCurrentBundle(Language.valueOf(langKey));
+                TextManager.setLanguage(Language.valueOf(langKey));
                 result = new CommandResult(CommandStatus.OK, TextManager.getText("chlang.changed"));
             } else {
                 result = new CommandResult(CommandStatus.ERROR, TextManager.getText("error.invalidParameters"));

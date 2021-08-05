@@ -11,9 +11,9 @@ import by.training.branching.controller.command.result.CommandResult;
 public interface Command {
 
     /**
-     * Delimiter regex for parsing {@code paramsLine}.
+     * Delimiter for parsing {@code paramsLine}.
      */
-    String DELIMITER_REGEX = "\\s+";
+    String DELIMITER = " ";
 
     /**
      * Executes task.
