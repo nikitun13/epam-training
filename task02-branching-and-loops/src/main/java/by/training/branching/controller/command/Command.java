@@ -23,4 +23,14 @@ public interface Command {
      * @see CommandResult
      */
     CommandResult execute(String paramsLine);
+
+    /**
+     * Splits string of params.
+     *
+     * @param paramsLine string of params.
+     * @return array of params.
+     */
+    default String[] splitParams(String paramsLine) {
+        return paramsLine.split(DELIMITER);
+    }
 }

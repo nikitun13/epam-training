@@ -24,19 +24,16 @@ public class ChangeLanguageCommand implements Command {
 
     @Override
     public CommandResult execute(String paramsLine) {
+        CommandResult result;
         logger.debug("received params: {}", paramsLine);
-        String[] params = paramsLine.split(Command.DELIMITER);
+        String[] params = splitParams(paramsLine);
         String arrayStatus = Arrays.toString(params);
         logger.debug("split params: {}", arrayStatus);
-        CommandResult result;
-        if (params.length == 1) {
+        if (isValidNumberOfParams(params)) {
             String langKey = params[0].toUpperCase();
-            List<String> list = Arrays.stream(Language.values())
-                    .map(Language::toString)
-                    .toList();
-            if (list.contains(langKey)) {
+            if (isValidParamLang(langKey)) {
                 TextManager.setLanguage(Language.valueOf(langKey));
-                result = new CommandResult(CommandStatus.OK, TextManager.getText("chlang.changed"));
+                result = new CommandResult(CommandStatus.OK, TextManager.getText("chlang.result"));
             } else {
                 result = new CommandResult(CommandStatus.ERROR, TextManager.getText("error.invalidParameters"));
                 logger.error("Invalid language parameter: {}", langKey);
@@ -47,5 +44,16 @@ public class ChangeLanguageCommand implements Command {
         }
         logger.debug("result: {}", result);
         return result;
+    }
+
+    private boolean isValidNumberOfParams(String[] params) {
+        return params.length == 1;
+    }
+
+    private boolean isValidParamLang(String langKey) {
+        List<String> list = Arrays.stream(Language.values())
+                .map(Language::toString)
+                .toList();
+        return list.contains(langKey);
     }
 }

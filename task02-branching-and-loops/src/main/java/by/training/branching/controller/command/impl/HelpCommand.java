@@ -27,7 +27,7 @@ public class HelpCommand implements Command {
         if (paramsLine.isBlank()) {
             result = getAllCommands();
         } else {
-            result = parseParams(paramsLine);
+            result = getDescription(paramsLine);
         }
         logger.debug("result: {}", result);
         return result;
@@ -48,13 +48,26 @@ public class HelpCommand implements Command {
         return new CommandResult(CommandStatus.OK, commands);
     }
 
-    private CommandResult parseParams(String paramsLine) {
+    private CommandResult getDescription(String paramsLine) {
         CommandResult result;
-        String[] params = paramsLine.split(Command.DELIMITER);
+        String[] params = splitParams(paramsLine);
         String arrayStatus = Arrays.toString(params);
         logger.debug("split params: {}", arrayStatus);
-        if (params.length == 1) {
-            result = getDescription(params[0]);
+        if (isValidNumberOfParams(params)) {
+            String commandName = params[0];
+            String textKey = "help." + commandName;
+            if (isValidParamCommandName(textKey)) {
+                result = new CommandResult(
+                        CommandStatus.OK,
+                        TextManager.getText(textKey)
+                );
+            } else {
+                result = new CommandResult(
+                        CommandStatus.ERROR,
+                        TextManager.getText("error.invalidParameters")
+                );
+                logger.error("Invalid parameter commandName: {}", commandName);
+            }
         } else {
             result = new CommandResult(
                     CommandStatus.ERROR,
@@ -65,15 +78,11 @@ public class HelpCommand implements Command {
         return result;
     }
 
-    private CommandResult getDescription(String commandName) {
-        String textKey = "help." + commandName;
-        CommandResult result;
-        if (TextManager.isExist(textKey)) {
-            result = new CommandResult(CommandStatus.OK, TextManager.getText(textKey));
-        } else {
-            result = new CommandResult(CommandStatus.ERROR, TextManager.getText("error.invalidParameters"));
-            logger.error("Invalid parameter commandName: {}", commandName);
-        }
-        return result;
+    private boolean isValidNumberOfParams(String[] params) {
+        return params.length == 1;
+    }
+
+    private boolean isValidParamCommandName(String textKey) {
+        return TextManager.isExist(textKey);
     }
 }
