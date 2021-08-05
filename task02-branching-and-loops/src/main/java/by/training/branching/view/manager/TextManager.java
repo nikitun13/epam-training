@@ -50,7 +50,7 @@ public final class TextManager {
      *
      * @param language new language
      */
-    public static void setCurrentBundle(Language language) {
+    public static void setLanguage(Language language) {
         currentBundle = language.getBundle();
     }
 }
