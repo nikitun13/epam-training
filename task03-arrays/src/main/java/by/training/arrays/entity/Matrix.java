@@ -50,8 +50,8 @@ public class Matrix {
             elements[rowIndex][columnIndex] = value;
         } else {
             throw new MatrixException(String.format(
-                    "Indexes are out of range: %d and %d",
-                    rowIndex, columnIndex)
+                    "Indexes %d and %d are out of range for matrix %dx%d",
+                    rowIndex, columnIndex, getNumberOfRows(), getNumberOfColumns())
             );
         }
     }
@@ -73,10 +73,10 @@ public class Matrix {
     public String toString() {
         final String BLANK = " ";
         StringBuilder s = new StringBuilder("\nMatrix : "
-                + elements.length + "x"
-                + elements[0].length + "\n");
-        for (int[] rows : elements) {
-            for (int value : rows) {
+                + getNumberOfRows() + "x"
+                + getNumberOfColumns() + "\n");
+        for (int[] row : elements) {
+            for (int value : row) {
                 s.append(value).append(BLANK);
             }
             s.append("\n");
@@ -84,8 +84,10 @@ public class Matrix {
         return s.toString();
     }
 
-    private boolean checkRange(int i, int j) {
-        return i >= 0 && i < elements.length && j >= 0 && j < elements[0].length;
+    private boolean checkRange(int rows, int columns) {
+        return isValidSize(rows, columns) &&
+                rows < getNumberOfRows() &&
+                columns < getNumberOfColumns();
     }
 
     private static boolean isValidSize(int rows, int columns) {
@@ -98,8 +100,8 @@ public class Matrix {
         }
         int columnsNumber = rows[0].length;
         for (int i = 1; i < rows.length; i++) {
-            int[] columns = rows[i];
-            if (columnsNumber != columns.length) {
+            int[] row = rows[i];
+            if (columnsNumber != row.length) {
                 return false;
             }
         }
