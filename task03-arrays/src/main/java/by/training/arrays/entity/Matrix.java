@@ -11,7 +11,8 @@ public class Matrix {
 
     public Matrix(int[][] elements) {
         Objects.requireNonNull(elements);
-        if (!isValidSize(elements)) {
+        Arrays.stream(elements).forEach(Objects::requireNonNull);
+        if (!isValidArray(elements)) {
             throw new MatrixException("Invalid array of arrays");
         }
         this.elements = elements;
@@ -94,8 +95,8 @@ public class Matrix {
         return rows > 0 && columns > 0;
     }
 
-    private static boolean isValidSize(int[][] rows) {
-        if (rows.length < 1) {
+    private static boolean isValidArray(int[][] rows) {
+        if (rows.length < 1 || rows[0].length < 1) {
             return false;
         }
         int columnsNumber = rows[0].length;
