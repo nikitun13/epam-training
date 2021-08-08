@@ -86,7 +86,8 @@ public class Matrix {
     }
 
     private boolean checkRange(int rows, int columns) {
-        return isValidSize(rows, columns) &&
+        return rows >= 0 &&
+                columns >= 0 &&
                 rows < getNumberOfRows() &&
                 columns < getNumberOfColumns();
     }
