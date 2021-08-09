@@ -2,9 +2,16 @@ package by.training.arrays.service.impl;
 
 import by.training.arrays.entity.Matrix;
 import by.training.arrays.service.exception.ServiceException;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
-import static org.testng.Assert.*;
+import java.nio.file.Path;
+import java.util.List;
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.fail;
 
 public class MatrixCreatorServiceImplTest {
 
@@ -28,8 +35,8 @@ public class MatrixCreatorServiceImplTest {
         };
     }
 
-    @DataProvider
-    public static Object[][] negativeDataForFillRandomized() {
+    @DataProvider(name = "negativeDataForFillRandomized")
+    public static Object[][] createNegativeDataForFillRandomized() {
         return new Object[][]{
                 {new Matrix(new int[10][10]), 1, 0},
                 {new Matrix(new int[10][10]), 5, 0},
@@ -40,6 +47,104 @@ public class MatrixCreatorServiceImplTest {
                 {new Matrix(new int[10][10]), 1, -1},
                 {new Matrix(new int[10][10]), 5, -5},
                 {new Matrix(new int[10][10]), 5, -5}
+        };
+    }
+
+    @DataProvider(name = "positiveDataForCreateFromFile")
+    public static Object[][] createPositiveDataForCreateFromFile() {
+        return new Object[][]{
+                {
+                        Path.of("src", "test", "resources", "matrix", "positive", "01-positive-data-for-CreateFromFile.txt"),
+                        List.of(new Matrix(
+                                        new int[][]{{1, 2}, {3, 4}}
+                                )
+                        )
+                },
+                {
+                        Path.of("src", "test", "resources", "matrix", "positive", "02-positive-data-for-CreateFromFile.txt"),
+                        List.of(new Matrix(
+                                        new int[][]{{1, 2}, {3, 4}}
+                                )
+                        )
+                },
+                {
+                        Path.of("src", "test", "resources", "matrix", "positive", "03-positive-data-for-CreateFromFile.txt"),
+                        List.of(new Matrix(
+                                        new int[][]{{1, 2}, {3, 4}}
+                                ),
+                                new Matrix(
+                                        new int[][]{{1, 2, 3}, {4, 5, 6}}
+                                )
+                        )
+                },
+                {
+                        Path.of("src", "test", "resources", "matrix", "positive", "04-positive-data-for-CreateFromFile.txt"),
+                        List.of(new Matrix(
+                                        new int[][]{{1, 2}, {3, 4}}
+                                ),
+                                new Matrix(
+                                        new int[][]{{1, 2, 3}, {4, 5, 6}}
+                                )
+                        )
+                },
+                {
+                        Path.of("src", "test", "resources", "matrix", "positive", "05-positive-data-for-CreateFromFile.txt"),
+                        List.of(new Matrix(
+                                        new int[][]{{1, 2}, {3, 4}}
+                                ),
+                                new Matrix(
+                                        new int[][]{{1, 2, 3}, {4, 5, 6}}
+                                ),
+                                new Matrix(
+                                        new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}
+                                )
+                        )
+                },
+                {
+                        Path.of("src", "test", "resources", "matrix", "positive", "07-positive-data-for-CreateFromFile.txt"),
+                        List.of(new Matrix(
+                                        new int[][]{{1}}
+                                )
+                        )
+                },
+                {
+                        Path.of("src", "test", "resources", "matrix", "positive", "08-positive-data-for-CreateFromFile.txt"),
+                        List.of(new Matrix(
+                                        new int[][]{{1, 2}}
+                                )
+                        )
+                },
+                {
+                        Path.of("src", "test", "resources", "matrix", "positive", "09-positive-data-for-CreateFromFile.txt"),
+                        List.of(new Matrix(
+                                        new int[][]{{1}, {2}}
+                                )
+                        )
+                }
+        };
+    }
+
+    @DataProvider
+    public static Object[][] negativeDataForCreateFromFile() {
+        return new Object[][]{
+                {Path.of("invalidPath.txt")},
+                {Path.of("src", "test", "resources", "matrix", "negative", "01-negative-data-for-CreateFromFile.txt")},
+                {Path.of("src", "test", "resources", "matrix", "negative", "02-negative-data-for-CreateFromFile.txt")},
+                {Path.of("src", "test", "resources", "matrix", "negative", "03-negative-data-for-CreateFromFile.txt")},
+                {Path.of("src", "test", "resources", "matrix", "negative", "04-negative-data-for-CreateFromFile.txt")},
+                {Path.of("src", "test", "resources", "matrix", "negative", "05-negative-data-for-CreateFromFile.txt")},
+                {Path.of("src", "test", "resources", "matrix", "negative", "06-negative-data-for-CreateFromFile.txt")},
+                {Path.of("src", "test", "resources", "matrix", "negative", "07-negative-data-for-CreateFromFile.txt")},
+                {Path.of("src", "test", "resources", "matrix", "negative", "08-negative-data-for-CreateFromFile.txt")},
+                {Path.of("src", "test", "resources", "matrix", "negative", "09-negative-data-for-CreateFromFile.txt")},
+                {Path.of("src", "test", "resources", "matrix", "negative", "10-negative-data-for-CreateFromFile.txt")},
+                {Path.of("src", "test", "resources", "matrix", "negative", "11-negative-data-for-CreateFromFile.txt")},
+                {Path.of("src", "test", "resources", "matrix", "negative", "12-negative-data-for-CreateFromFile.txt")},
+                {Path.of("src", "test", "resources", "matrix", "negative", "13-negative-data-for-CreateFromFile.txt")},
+                {Path.of("src", "test", "resources", "matrix", "negative", "14-negative-data-for-CreateFromFile.txt")},
+                {Path.of("src", "test", "resources", "matrix", "negative", "15-negative-data-for-CreateFromFile.txt")},
+                {Path.of("src", "test", "resources", "matrix", "negative", "16-negative-data-for-CreateFromFile.txt")},
+                {Path.of("src", "test", "resources", "matrix", "negative", "17-negative-data-for-CreateFromFile.txt")}
         };
     }
 
@@ -72,6 +177,28 @@ public class MatrixCreatorServiceImplTest {
         fail("must throw "
                 + NullPointerException.class.getName()
                 + " for null matrix on input");
+    }
+
+    @Test(description = "test positive scenario for createFromFile method",
+            dataProvider = "positiveDataForCreateFromFile")
+    public void testPositiveScenarioCreateFromFile(Path path, List<Matrix> expected) {
+        List<Matrix> actual = service.createFromFile(path);
+        assertEquals(actual, expected);
+    }
+
+    @Test(description = "test negative scenario for createFromFile method",
+            dataProvider = "negativeDataForCreateFromFile",
+            expectedExceptions = ServiceException.class)
+    public void testNegativeScenarioCreateFromFile(Path path) {
+        service.createFromFile(path);
+        fail("must throw " + ServiceException.class.getName() + " for invalid data in the file");
+    }
+
+    @Test(description = "test path is null scenario for createFromFile method",
+            expectedExceptions = NullPointerException.class)
+    public void testPathIsNullScenarioCreateFromFile() {
+        service.createFromFile(null);
+        fail("must throw " + NullPointerException.class.getName() + " for null path on input");
     }
 
     @AfterClass
