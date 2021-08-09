@@ -7,8 +7,12 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.List;
+import java.util.*;
+import java.util.stream.StreamSupport;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.fail;
@@ -51,101 +55,40 @@ public class MatrixCreatorServiceImplTest {
     }
 
     @DataProvider(name = "positiveDataForCreateFromFile")
-    public static Object[][] createPositiveDataForCreateFromFile() {
-        return new Object[][]{
-                {
-                        Path.of("src", "test", "resources", "matrix", "creator", "positive", "01-positive-data-for-CreateFromFile.txt"),
-                        List.of(new Matrix(
-                                        new int[][]{{1, 2}, {3, 4}}
-                                )
-                        )
-                },
-                {
-                        Path.of("src", "test", "resources", "matrix", "creator", "positive", "02-positive-data-for-CreateFromFile.txt"),
-                        List.of(new Matrix(
-                                        new int[][]{{1, 2}, {3, 4}}
-                                )
-                        )
-                },
-                {
-                        Path.of("src", "test", "resources", "matrix", "creator", "positive", "03-positive-data-for-CreateFromFile.txt"),
-                        List.of(new Matrix(
-                                        new int[][]{{1, 2}, {3, 4}}
-                                ),
-                                new Matrix(
-                                        new int[][]{{1, 2, 3}, {4, 5, 6}}
-                                )
-                        )
-                },
-                {
-                        Path.of("src", "test", "resources", "matrix", "creator", "positive", "04-positive-data-for-CreateFromFile.txt"),
-                        List.of(new Matrix(
-                                        new int[][]{{1, 2}, {3, 4}}
-                                ),
-                                new Matrix(
-                                        new int[][]{{1, 2, 3}, {4, 5, 6}}
-                                )
-                        )
-                },
-                {
-                        Path.of("src", "test", "resources", "matrix", "creator", "positive", "05-positive-data-for-CreateFromFile.txt"),
-                        List.of(new Matrix(
-                                        new int[][]{{1, 2}, {3, 4}}
-                                ),
-                                new Matrix(
-                                        new int[][]{{1, 2, 3}, {4, 5, 6}}
-                                ),
-                                new Matrix(
-                                        new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}
-                                )
-                        )
-                },
-                {
-                        Path.of("src", "test", "resources", "matrix", "creator", "positive", "07-positive-data-for-CreateFromFile.txt"),
-                        List.of(new Matrix(
-                                        new int[][]{{1}}
-                                )
-                        )
-                },
-                {
-                        Path.of("src", "test", "resources", "matrix", "creator", "positive", "08-positive-data-for-CreateFromFile.txt"),
-                        List.of(new Matrix(
-                                        new int[][]{{1, 2}}
-                                )
-                        )
-                },
-                {
-                        Path.of("src", "test", "resources", "matrix", "creator", "positive", "09-positive-data-for-CreateFromFile.txt"),
-                        List.of(new Matrix(
-                                        new int[][]{{1}, {2}}
-                                )
-                        )
-                }
-        };
+    public static Iterator<Object[]> createPositiveDataForCreateFromFile() throws IOException {
+        Path parent = Path.of("src", "test", "resources", "matrix", "creator", "createFromFile", "positive");
+        DirectoryStream<Path> children = Files.newDirectoryStream(parent);
+        Queue<List<Matrix>> list = new LinkedList<>(List.of(
+                List.of(new Matrix(new int[][]{{1, 2}, {3, 4}})),
+                List.of(new Matrix(new int[][]{{1, 2}, {3, 4}})),
+                List.of(new Matrix(new int[][]{{1, 2}, {3, 4}}),
+                        new Matrix(new int[][]{{1, 2, 3}, {4, 5, 6}})),
+                List.of(new Matrix(new int[][]{{1, 2}, {3, 4}}),
+                        new Matrix(new int[][]{{1, 2, 3}, {4, 5, 6}})),
+                List.of(new Matrix(new int[][]{{1, 2}, {3, 4}}),
+                        new Matrix(new int[][]{{1, 2, 3}, {4, 5, 6}}),
+                        new Matrix(new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}})),
+                List.of(new Matrix(new int[][]{{1}})),
+                List.of(new Matrix(new int[][]{{1, 2}})),
+                List.of(new Matrix(new int[][]{{1}, {2}})),
+                List.of(new Matrix(new int[][]{{1, 2}, {3, 4}})),
+                List.of(new Matrix(new int[][]{{1, 2}, {3, 4}})),
+                List.of(new Matrix(new int[][]{{1, 2}, {3, 4}})),
+                List.of(new Matrix(new int[][]{{1, 2}, {3, 4}})),
+                List.of(new Matrix(new int[][]{{1, 2}, {3, 4}}))
+        ));
+        return StreamSupport.stream(children.spliterator(), false)
+                .map(path -> new Object[]{path, list.remove()})
+                .iterator();
     }
 
     @DataProvider
-    public static Object[][] negativeDataForCreateFromFile() {
-        return new Object[][]{
-                {Path.of("invalidPath.txt")},
-                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "01-negative-data-for-CreateFromFile.txt")},
-                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "02-negative-data-for-CreateFromFile.txt")},
-                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "03-negative-data-for-CreateFromFile.txt")},
-                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "04-negative-data-for-CreateFromFile.txt")},
-                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "05-negative-data-for-CreateFromFile.txt")},
-                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "06-negative-data-for-CreateFromFile.txt")},
-                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "07-negative-data-for-CreateFromFile.txt")},
-                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "08-negative-data-for-CreateFromFile.txt")},
-                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "09-negative-data-for-CreateFromFile.txt")},
-                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "10-negative-data-for-CreateFromFile.txt")},
-                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "11-negative-data-for-CreateFromFile.txt")},
-                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "12-negative-data-for-CreateFromFile.txt")},
-                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "13-negative-data-for-CreateFromFile.txt")},
-                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "14-negative-data-for-CreateFromFile.txt")},
-                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "15-negative-data-for-CreateFromFile.txt")},
-                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "16-negative-data-for-CreateFromFile.txt")},
-                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "17-negative-data-for-CreateFromFile.txt")}
-        };
+    public static Iterator<Object[]> negativeDataForCreateFromFile() throws IOException {
+        Path parent = Path.of("src", "test", "resources", "matrix", "creator", "createFromFile", "negative");
+        DirectoryStream<Path> children = Files.newDirectoryStream(parent);
+        return StreamSupport.stream(children.spliterator(), false)
+                .map(path -> new Object[]{path})
+                .iterator();
     }
 
     @BeforeClass

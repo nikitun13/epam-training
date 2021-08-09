@@ -22,7 +22,7 @@ public class MatrixCreatorServiceImpl implements MatrixCreatorService {
     private static final Logger logger = LogManager.getLogger(MatrixCreatorServiceImpl.class);
 
     private static final Random random = new Random();
-    private static final String SEPARATOR = " ";
+    private static final String SEPARATOR = "\\s+";
 
     @Override
     public void fillRandomized(Matrix matrix, int minValue, int maxValue) {
@@ -58,8 +58,7 @@ public class MatrixCreatorServiceImpl implements MatrixCreatorService {
             while ((indexOfSeparator = findIndexOfSeparator(allLines, currentIndex)) >= currentIndex) {
                 List<String> subList = allLines.subList(currentIndex, indexOfSeparator);
                 logger.debug("subList: {}", subList);
-                int[][] elements = convertToIntArrayOfArrays(subList);
-                Matrix matrix = new Matrix(elements);
+                Matrix matrix = createMatrixFromStringList(subList);
                 result.add(matrix);
                 logger.debug("added to list: {}", matrix);
                 currentIndex = indexOfSeparator + 1;
@@ -73,17 +72,6 @@ public class MatrixCreatorServiceImpl implements MatrixCreatorService {
         }
     }
 
-    private int[][] convertToIntArrayOfArrays(List<String> list) {
-        logger.debug("received: {}", list);
-        return list.stream()
-                .map(line -> line.split(SEPARATOR))
-                .map(array -> Arrays.stream(array)
-                        .mapToInt(Integer::parseInt)
-                        .toArray()
-                )
-                .toArray(int[][]::new);
-    }
-
     private int findIndexOfSeparator(List<String> list, int startFrom) {
         logger.debug("received start index = {}, list: {}", startFrom, list);
         int size = list.size();
@@ -95,5 +83,21 @@ public class MatrixCreatorServiceImpl implements MatrixCreatorService {
         }
         logger.debug("no empty lines, return end of file index: {}", size);
         return size;
+    }
+
+    private int[][] convertToIntArrayOfArrays(List<String> list) {
+        logger.debug("received: {}", list);
+        return list.stream()
+                .map(line -> line.split(SEPARATOR))
+                .map(array -> Arrays.stream(array)
+                        .mapToInt(Integer::parseInt)
+                        .toArray()
+                )
+                .toArray(int[][]::new);
+    }
+
+    private Matrix createMatrixFromStringList(List<String> list) {
+        int[][] elements = convertToIntArrayOfArrays(list);
+        return new Matrix(elements);
     }
 }
