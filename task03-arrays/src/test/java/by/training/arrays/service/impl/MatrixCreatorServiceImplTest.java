@@ -54,31 +54,21 @@ public class MatrixCreatorServiceImplTest {
     public static Object[][] createPositiveDataForCreateFromFile() {
         return new Object[][]{
                 {
-                        Path.of("src", "test", "resources", "matrix", "positive", "01-positive-data-for-CreateFromFile.txt"),
+                        Path.of("src", "test", "resources", "matrix", "creator", "positive", "01-positive-data-for-CreateFromFile.txt"),
                         List.of(new Matrix(
                                         new int[][]{{1, 2}, {3, 4}}
                                 )
                         )
                 },
                 {
-                        Path.of("src", "test", "resources", "matrix", "positive", "02-positive-data-for-CreateFromFile.txt"),
+                        Path.of("src", "test", "resources", "matrix", "creator", "positive", "02-positive-data-for-CreateFromFile.txt"),
                         List.of(new Matrix(
                                         new int[][]{{1, 2}, {3, 4}}
                                 )
                         )
                 },
                 {
-                        Path.of("src", "test", "resources", "matrix", "positive", "03-positive-data-for-CreateFromFile.txt"),
-                        List.of(new Matrix(
-                                        new int[][]{{1, 2}, {3, 4}}
-                                ),
-                                new Matrix(
-                                        new int[][]{{1, 2, 3}, {4, 5, 6}}
-                                )
-                        )
-                },
-                {
-                        Path.of("src", "test", "resources", "matrix", "positive", "04-positive-data-for-CreateFromFile.txt"),
+                        Path.of("src", "test", "resources", "matrix", "creator", "positive", "03-positive-data-for-CreateFromFile.txt"),
                         List.of(new Matrix(
                                         new int[][]{{1, 2}, {3, 4}}
                                 ),
@@ -88,7 +78,17 @@ public class MatrixCreatorServiceImplTest {
                         )
                 },
                 {
-                        Path.of("src", "test", "resources", "matrix", "positive", "05-positive-data-for-CreateFromFile.txt"),
+                        Path.of("src", "test", "resources", "matrix", "creator", "positive", "04-positive-data-for-CreateFromFile.txt"),
+                        List.of(new Matrix(
+                                        new int[][]{{1, 2}, {3, 4}}
+                                ),
+                                new Matrix(
+                                        new int[][]{{1, 2, 3}, {4, 5, 6}}
+                                )
+                        )
+                },
+                {
+                        Path.of("src", "test", "resources", "matrix", "creator", "positive", "05-positive-data-for-CreateFromFile.txt"),
                         List.of(new Matrix(
                                         new int[][]{{1, 2}, {3, 4}}
                                 ),
@@ -101,21 +101,21 @@ public class MatrixCreatorServiceImplTest {
                         )
                 },
                 {
-                        Path.of("src", "test", "resources", "matrix", "positive", "07-positive-data-for-CreateFromFile.txt"),
+                        Path.of("src", "test", "resources", "matrix", "creator", "positive", "07-positive-data-for-CreateFromFile.txt"),
                         List.of(new Matrix(
                                         new int[][]{{1}}
                                 )
                         )
                 },
                 {
-                        Path.of("src", "test", "resources", "matrix", "positive", "08-positive-data-for-CreateFromFile.txt"),
+                        Path.of("src", "test", "resources", "matrix", "creator", "positive", "08-positive-data-for-CreateFromFile.txt"),
                         List.of(new Matrix(
                                         new int[][]{{1, 2}}
                                 )
                         )
                 },
                 {
-                        Path.of("src", "test", "resources", "matrix", "positive", "09-positive-data-for-CreateFromFile.txt"),
+                        Path.of("src", "test", "resources", "matrix", "creator", "positive", "09-positive-data-for-CreateFromFile.txt"),
                         List.of(new Matrix(
                                         new int[][]{{1}, {2}}
                                 )
@@ -128,23 +128,23 @@ public class MatrixCreatorServiceImplTest {
     public static Object[][] negativeDataForCreateFromFile() {
         return new Object[][]{
                 {Path.of("invalidPath.txt")},
-                {Path.of("src", "test", "resources", "matrix", "negative", "01-negative-data-for-CreateFromFile.txt")},
-                {Path.of("src", "test", "resources", "matrix", "negative", "02-negative-data-for-CreateFromFile.txt")},
-                {Path.of("src", "test", "resources", "matrix", "negative", "03-negative-data-for-CreateFromFile.txt")},
-                {Path.of("src", "test", "resources", "matrix", "negative", "04-negative-data-for-CreateFromFile.txt")},
-                {Path.of("src", "test", "resources", "matrix", "negative", "05-negative-data-for-CreateFromFile.txt")},
-                {Path.of("src", "test", "resources", "matrix", "negative", "06-negative-data-for-CreateFromFile.txt")},
-                {Path.of("src", "test", "resources", "matrix", "negative", "07-negative-data-for-CreateFromFile.txt")},
-                {Path.of("src", "test", "resources", "matrix", "negative", "08-negative-data-for-CreateFromFile.txt")},
-                {Path.of("src", "test", "resources", "matrix", "negative", "09-negative-data-for-CreateFromFile.txt")},
-                {Path.of("src", "test", "resources", "matrix", "negative", "10-negative-data-for-CreateFromFile.txt")},
-                {Path.of("src", "test", "resources", "matrix", "negative", "11-negative-data-for-CreateFromFile.txt")},
-                {Path.of("src", "test", "resources", "matrix", "negative", "12-negative-data-for-CreateFromFile.txt")},
-                {Path.of("src", "test", "resources", "matrix", "negative", "13-negative-data-for-CreateFromFile.txt")},
-                {Path.of("src", "test", "resources", "matrix", "negative", "14-negative-data-for-CreateFromFile.txt")},
-                {Path.of("src", "test", "resources", "matrix", "negative", "15-negative-data-for-CreateFromFile.txt")},
-                {Path.of("src", "test", "resources", "matrix", "negative", "16-negative-data-for-CreateFromFile.txt")},
-                {Path.of("src", "test", "resources", "matrix", "negative", "17-negative-data-for-CreateFromFile.txt")}
+                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "01-negative-data-for-CreateFromFile.txt")},
+                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "02-negative-data-for-CreateFromFile.txt")},
+                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "03-negative-data-for-CreateFromFile.txt")},
+                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "04-negative-data-for-CreateFromFile.txt")},
+                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "05-negative-data-for-CreateFromFile.txt")},
+                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "06-negative-data-for-CreateFromFile.txt")},
+                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "07-negative-data-for-CreateFromFile.txt")},
+                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "08-negative-data-for-CreateFromFile.txt")},
+                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "09-negative-data-for-CreateFromFile.txt")},
+                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "10-negative-data-for-CreateFromFile.txt")},
+                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "11-negative-data-for-CreateFromFile.txt")},
+                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "12-negative-data-for-CreateFromFile.txt")},
+                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "13-negative-data-for-CreateFromFile.txt")},
+                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "14-negative-data-for-CreateFromFile.txt")},
+                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "15-negative-data-for-CreateFromFile.txt")},
+                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "16-negative-data-for-CreateFromFile.txt")},
+                {Path.of("src", "test", "resources", "matrix", "creator", "negative", "17-negative-data-for-CreateFromFile.txt")}
         };
     }
 
