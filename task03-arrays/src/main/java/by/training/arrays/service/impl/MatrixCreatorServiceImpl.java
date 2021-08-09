@@ -6,11 +6,14 @@ import by.training.arrays.service.exception.ServiceException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.Objects;
-import java.util.Random;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.*;
 
 /**
- * The class {@code MatrixCreatorServiceImpl} is a class that implements {@link MatrixCreatorService}.
+ * The class {@code MatrixCreatorServiceImpl}
+ * is a class that implements {@link MatrixCreatorService}.
  *
  * @author Nikita Romanov
  */
@@ -19,6 +22,7 @@ public class MatrixCreatorServiceImpl implements MatrixCreatorService {
     private static final Logger logger = LogManager.getLogger(MatrixCreatorServiceImpl.class);
 
     private static final Random random = new Random();
+    private static final String SEPARATOR = " ";
 
     @Override
     public void fillRandomized(Matrix matrix, int minValue, int maxValue) {
@@ -40,5 +44,56 @@ public class MatrixCreatorServiceImpl implements MatrixCreatorService {
                 matrix.setElement(i, j, value);
             }
         }
+    }
+
+    @Override
+    public List<Matrix> createFromFile(Path path) {
+        logger.debug("received path: {}", path);
+        Objects.requireNonNull(path);
+        try {
+            List<String> allLines = Files.readAllLines(path);
+            List<Matrix> result = new ArrayList<>();
+            int currentIndex = 0;
+            int indexOfSeparator;
+            while ((indexOfSeparator = findIndexOfSeparator(allLines, currentIndex)) >= currentIndex) {
+                List<String> subList = allLines.subList(currentIndex, indexOfSeparator);
+                logger.debug("subList: {}", subList);
+                int[][] elements = convertToIntArrayOfArrays(subList);
+                Matrix matrix = new Matrix(elements);
+                result.add(matrix);
+                logger.debug("added to list: {}", matrix);
+                currentIndex = indexOfSeparator + 1;
+            }
+            logger.debug("result: {}", result);
+            return result;
+        } catch (IOException e) {
+            throw new ServiceException("IO exception occurred", e);
+        } catch (RuntimeException e) {
+            throw new ServiceException("invalid matrix in the file", e);
+        }
+    }
+
+    private int[][] convertToIntArrayOfArrays(List<String> list) {
+        logger.debug("received: {}", list);
+        return list.stream()
+                .map(line -> line.split(SEPARATOR))
+                .map(array -> Arrays.stream(array)
+                        .mapToInt(Integer::parseInt)
+                        .toArray()
+                )
+                .toArray(int[][]::new);
+    }
+
+    private int findIndexOfSeparator(List<String> list, int startFrom) {
+        logger.debug("received start index = {}, list: {}", startFrom, list);
+        int size = list.size();
+        for (int i = startFrom; i < size; i++) {
+            if (list.get(i).isBlank()) {
+                logger.debug("index of empty line: {}", i);
+                return i;
+            }
+        }
+        logger.debug("no empty lines, return end of file index: {}", size);
+        return size;
     }
 }
