@@ -12,12 +12,14 @@ import java.util.List;
 public interface SortingService {
 
     /**
-     * Sorts elements in ascending order.
-     * The sorting type depends on the specific implementation.
+     * Sorts elements using comparing method
+     * from {@link Comparable} interface.<br>
+     * The sorting type depends
+     * on the specific implementation.
      *
      * @param list list of elements for sorting.
      * @param <T>  type of element for sorting.
-     * @return sorted list of elements.
+     * @see Comparable
      */
-    <T extends Comparable<? super T>> List<T> sort(List<T> list);
+    <T extends Comparable<? super T>> void sort(List<T> list);
 }
