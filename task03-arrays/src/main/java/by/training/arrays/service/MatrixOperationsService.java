@@ -22,7 +22,7 @@ public interface MatrixOperationsService {
      *                              is not the same as the number of rows of the right {@code matrix}.
      * @throws NullPointerException if any of two {@code matrix} is {@code null}.
      */
-    Matrix multiply(Matrix leftMatrix, Matrix rightMatrix);
+    Matrix multiplyTwoMatrix(Matrix leftMatrix, Matrix rightMatrix);
 
     /**
      * Multiplies a {@code matrix} by a {@code coefficient}.
@@ -32,7 +32,7 @@ public interface MatrixOperationsService {
      * @return product of the {@code coefficient} and the {@code matrix}.
      * @throws NullPointerException if the {@code matrix} is {@code null}.
      */
-    Matrix multiply(int coefficient, Matrix matrix);
+    Matrix multiplyByCoefficient(int coefficient, Matrix matrix);
 
     /**
      * Adds two {@code matrix}.
