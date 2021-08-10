@@ -56,7 +56,7 @@ public class MatrixCreatorServiceImplTest {
 
     @DataProvider(name = "positiveDataForCreateFromFile")
     public static Iterator<Object[]> createPositiveDataForCreateFromFile() throws IOException {
-        Path parent = Path.of("src", "test", "resources", "matrix", "creator", "createFromFile", "positive");
+        Path parent = Path.of("src", "test", "resources", "creator", "createFromFile", "positive");
         DirectoryStream<Path> children = Files.newDirectoryStream(parent);
         Queue<List<Matrix>> queue = new ArrayDeque<>(List.of(
                 List.of(new Matrix(new int[][]{{1, 2}, {3, 4}})),
@@ -84,7 +84,7 @@ public class MatrixCreatorServiceImplTest {
 
     @DataProvider
     public static Iterator<Object[]> negativeDataForCreateFromFile() throws IOException {
-        Path parent = Path.of("src", "test", "resources", "matrix", "creator", "createFromFile", "negative");
+        Path parent = Path.of("src", "test", "resources", "creator", "createFromFile", "negative");
         DirectoryStream<Path> children = Files.newDirectoryStream(parent);
         return StreamSupport.stream(children.spliterator(), false)
                 .map(path -> new Object[]{path})
