@@ -39,7 +39,7 @@ public class MatrixOperationsServiceImplTest {
                 {new Matrix(3, 3), new Matrix(2, 3)},
                 {new Matrix(2, 1), new Matrix(2, 3)},
                 {new Matrix(4, 2), new Matrix(4, 2)},
-                {new Matrix(2, 1), new Matrix(1, 2)}
+                {new Matrix(2, 1), new Matrix(7, 2)}
         };
     }
 
