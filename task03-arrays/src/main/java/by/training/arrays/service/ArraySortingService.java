@@ -21,6 +21,7 @@ public interface ArraySortingService {
      *
      * @param array {@code Array} of elements for sorting.
      * @param <T>   type of element for sorting.
+     * @throws NullPointerException if {@code array} is {@code null}.
      */
     <T extends Comparable<? super T>> void sort(Array<T> array);
 }
