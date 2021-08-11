@@ -15,7 +15,7 @@ public class Matrix {
         if (!isValidArray(elements)) {
             throw new MatrixException("Invalid array of arrays");
         }
-        this.elements = elements;
+        this.elements = elements.clone();
     }
 
     public Matrix(int rows, int columns) {
