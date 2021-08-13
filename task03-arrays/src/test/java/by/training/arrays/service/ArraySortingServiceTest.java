@@ -1,7 +1,7 @@
 package by.training.arrays.service;
 
 import by.training.arrays.entity.Array;
-import by.training.arrays.service.impl.SelectionSort;
+import by.training.arrays.service.impl.*;
 import org.testng.annotations.*;
 import org.testng.internal.collections.Pair;
 
@@ -28,7 +28,11 @@ public class ArraySortingServiceTest {
     @DataProvider(name = "serviceImplementationData")
     public Object[][] serviceImplementationData() {
         return new Object[][]{
-                {new SelectionSort()}
+                {new SelectionSort()},
+                {new InsertionSort()},
+                {new BubbleSort()},
+                {new ShakerSort()},
+                {new ShellSort()}
         };
     }
 
@@ -74,7 +78,7 @@ public class ArraySortingServiceTest {
 
     @Test(description = "test array is null scenario for sort method",
             expectedExceptions = NullPointerException.class)
-    public <T extends Comparable<? super T>> void testArrayIsNullScenarioForSort() {
+    public void testArrayIsNullScenarioForSort() {
         service.sort(null);
     }
 
