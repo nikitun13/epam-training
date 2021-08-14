@@ -1,9 +1,6 @@
 package by.training.arrays.entity;
 
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * The class {@code Array} represents entity
@@ -65,6 +62,25 @@ public class Array<T> implements Iterable<T> {
     public void set(int index, T element) {
         Objects.checkIndex(index, getSize());
         elements[index] = element;
+    }
+
+    /**
+     * Returns copy of the {@code Array}
+     * with range from {@code fromIndex} to {@code toIndex}.
+     *
+     * @param fromIndex the initial index of the range to be copied, inclusive
+     * @param toIndex   the final index of the range to be copied, exclusive.
+     *                  This index may lie outside the array.
+     * @return a new {@code Array} containing the specified range
+     * from the original {@code Array}.
+     * @throws ArrayIndexOutOfBoundsException if {@code fromIndex < 0}.
+     *                                        Or
+     *                                        {@code fromIndex > size of Array}.
+     * @throws IllegalArgumentException       if {@code fromIndex > toIndex}.
+     **/
+    public Array<T> subArray(int fromIndex, int toIndex) {
+        T[] newElements = Arrays.copyOfRange(elements, fromIndex, toIndex);
+        return new Array<>(newElements);
     }
 
     public int getSize() {
