@@ -32,7 +32,9 @@ public class ArraySortingServiceTest {
                 {new InsertionSort()},
                 {new BubbleSort()},
                 {new ShakerSort()},
-                {new ShellSort()}
+                {new ShellSort()},
+                {new BinaryMergeSort()},
+                {new BinaryInsertionSort()}
         };
     }
 
