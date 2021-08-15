@@ -1,4 +1,4 @@
-package by.training.arrays.service.impl;
+package by.training.arrays.service.impl.sort;
 
 import by.training.arrays.entity.Array;
 import by.training.arrays.service.ArraySortingService;
