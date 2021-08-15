@@ -19,9 +19,10 @@ import java.util.*;
  */
 public class MatrixCreatorServiceImpl implements MatrixCreatorService {
 
-    private static final Logger logger = LogManager.getLogger(MatrixCreatorServiceImpl.class);
+    private static final Logger logger =
+            LogManager.getLogger(MatrixCreatorServiceImpl.class);
 
-    private static final Random random = new Random();
+    private static final Random RANDOM = new Random();
     private static final String SEPARATOR = "\\s+";
 
     @Override
@@ -40,7 +41,7 @@ public class MatrixCreatorServiceImpl implements MatrixCreatorService {
         int columns = matrix.getNumberOfColumns();
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                int value = random.nextInt(diff + 1) + minValue;
+                int value = RANDOM.nextInt(diff + 1) + minValue;
                 matrix.setElement(i, j, value);
             }
         }
@@ -55,8 +56,11 @@ public class MatrixCreatorServiceImpl implements MatrixCreatorService {
             List<Matrix> result = new ArrayList<>();
             int currentIndex = 0;
             int indexOfSeparator;
-            while ((indexOfSeparator = findIndexOfSeparator(allLines, currentIndex)) >= currentIndex) {
-                List<String> subList = allLines.subList(currentIndex, indexOfSeparator);
+            while ((indexOfSeparator =
+                    findIndexOfSeparator(allLines, currentIndex))
+                    >= currentIndex) {
+                List<String> subList =
+                        allLines.subList(currentIndex, indexOfSeparator);
                 logger.debug("subList: {}", subList);
                 Matrix matrix = createMatrixFromStringList(subList);
                 result.add(matrix);
