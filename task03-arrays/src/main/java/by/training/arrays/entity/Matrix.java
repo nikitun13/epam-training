@@ -5,10 +5,34 @@ import by.training.arrays.entity.exception.MatrixException;
 import java.util.Arrays;
 import java.util.Objects;
 
+/**
+ * The class {@code Matrix} represents entity
+ * of a matrix.<br>
+ * Contains array of arrays with elements.
+ * Provides access to them through methods.
+ *
+ * @author Nikita Romanov
+ */
 public class Matrix {
 
+    private static final String BLANK = " ";
+
+    /**
+     * Array of arrays with elements.
+     */
     private final int[][] elements;
 
+    /**
+     * Constructor of {@code Matrix}.<br/>
+     * Creates object using array of arrays
+     * with elements.
+     *
+     * @param elements array of arrays with elements.
+     * @throws NullPointerException if {@code elements} is null.
+     * @throws MatrixException      if arrays in the array
+     *                              have different size
+     *                              or size of array is less than 1.
+     */
     public Matrix(int[][] elements) {
         Objects.requireNonNull(elements);
         Arrays.stream(elements).forEach(Objects::requireNonNull);
@@ -18,6 +42,15 @@ public class Matrix {
         this.elements = elements.clone();
     }
 
+    /**
+     * Constructor of {@code Matrix}.<br/>
+     * Creates object using {@code rows} and {@code columns}.
+     *
+     * @param rows    number of rows.
+     * @param columns number of columns.
+     * @throws MatrixException if {@code rows}
+     *                         or {@code columns} is less than 1.
+     */
     public Matrix(int rows, int columns) {
         if (!isValidSize(rows, columns)) {
             throw new MatrixException(String.format("Matrix %dx%d can't exist",
@@ -35,6 +68,15 @@ public class Matrix {
         return elements[0].length;
     }
 
+    /**
+     * Returns element of {@code Matrix} with
+     * indexes {@code rowIndex} and {@code columnIndex}.
+     *
+     * @param rowIndex    index of row.
+     * @param columnIndex index of column.
+     * @return element with given indexes.
+     * @throws MatrixException if no such element with given indexes.
+     */
     public int getElement(int rowIndex, int columnIndex) {
         if (checkRange(rowIndex, columnIndex)) {
             return elements[rowIndex][columnIndex];
@@ -46,13 +88,23 @@ public class Matrix {
         }
     }
 
+    /**
+     * Sets element to the position with
+     * indexes {@code rowIndex} and {@code columnIndex}.
+     *
+     * @param rowIndex    index of row.
+     * @param columnIndex index of column.
+     * @param value       value to set to the position.
+     * @throws MatrixException if indexes are out of range.
+     */
     public void setElement(int rowIndex, int columnIndex, int value) {
         if (checkRange(rowIndex, columnIndex)) {
             elements[rowIndex][columnIndex] = value;
         } else {
             throw new MatrixException(String.format(
                     "Indexes %d and %d are out of range for matrix %dx%d",
-                    rowIndex, columnIndex, getNumberOfRows(), getNumberOfColumns())
+                    rowIndex, columnIndex,
+                    getNumberOfRows(), getNumberOfColumns())
             );
         }
     }
@@ -72,7 +124,6 @@ public class Matrix {
 
     @Override
     public String toString() {
-        final String BLANK = " ";
         StringBuilder s = new StringBuilder("\nMatrix : "
                 + getNumberOfRows() + "x"
                 + getNumberOfColumns() + "\n");
