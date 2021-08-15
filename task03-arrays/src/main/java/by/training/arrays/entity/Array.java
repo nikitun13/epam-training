@@ -22,6 +22,7 @@ public class Array<T> implements Iterable<T> {
      * Creates array of elements with {@code initialSize}.
      *
      * @param initialSize initial size for creation {@code Array}.
+     * @throws NegativeArraySizeException if {@code initialSize} is negative.
      */
     @SuppressWarnings("unchecked")
     public Array(int initialSize) {
