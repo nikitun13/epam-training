@@ -1,7 +1,7 @@
 package by.training.arrays.service;
 
 import by.training.arrays.entity.Array;
-import by.training.arrays.service.impl.*;
+import by.training.arrays.service.impl.sort.*;
 import org.testng.annotations.*;
 import org.testng.internal.collections.Pair;
 
