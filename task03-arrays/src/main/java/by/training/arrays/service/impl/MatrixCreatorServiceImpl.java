@@ -45,6 +45,7 @@ public class MatrixCreatorServiceImpl implements MatrixCreatorService {
                 matrix.setElement(i, j, value);
             }
         }
+        logger.debug("result: {}", matrix);
     }
 
     @Override

@@ -29,7 +29,6 @@ public interface MatrixCreatorService {
     /**
      * Creates list of {@code Matrix} with values
      * that are contained in the file.<br>
-     * The values in the file must be separated by a space.
      * Different {@code matrix} in the file must be separated
      * by an empty line.
      *
