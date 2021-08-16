@@ -14,7 +14,7 @@ import java.util.Objects;
  * @author Nikita Romanov
  * @see ArraySortingService
  */
-public class ArraySortingServiceProvider {
+public final class ArraySortingServiceProvider {
 
     private static final ArraySortingServiceProvider INSTANCE =
             new ArraySortingServiceProvider();
