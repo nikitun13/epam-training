@@ -32,9 +32,11 @@ public interface ArrayCreatorService {
 
     /**
      * Creates list of {@code Array} of {@code String}
-     * with values that are contained in the file.<br>
-     * Different {@code Arrays} in the file must be separated
-     * by an empty line.
+     * with values that are contained in the file.<br/>
+     * Elements of {@code Array} in the file are
+     * in one line seperated by white space (could be more than one).<br/>
+     * Blank lines are ignored. All leading and trailing
+     * white space are ignored.
      *
      * @param path path to file.
      * @return list of {@code Array} with values
@@ -51,6 +53,9 @@ public interface ArrayCreatorService {
      *
      * @param array {@code Array of Strings} to convert.
      * @return result of converting.
+     * @throws NullPointerException if {@code array} is {@code null}.
+     * @throws ServiceException     if any of elements of input {@code array}
+     *                              cannot be parsed as an integer.
      */
     Array<Integer> convertToIntegerArray(Array<String> array);
 }
