@@ -3,6 +3,7 @@ package by.training.arrays.controller.command.impl;
 import by.training.arrays.controller.command.Command;
 import by.training.arrays.controller.command.result.CommandResult;
 import by.training.arrays.controller.command.result.CommandStatus;
+import by.training.arrays.view.manager.TextManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,7 +21,9 @@ public class ExitCommand implements Command {
             LogManager.getLogger(ExitCommand.class);
 
     private final CommandResult exitResult =
-            new CommandResult(CommandStatus.EXIT);
+            new CommandResult(CommandStatus.EXIT,
+                    TextManager.getText("exit.shutdown")
+            );
 
     @Override
     public CommandResult execute(String[] params) {
