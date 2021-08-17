@@ -58,7 +58,7 @@ public class ArrayCreatorServiceImpl implements ArrayCreatorService {
         logger.debug("received path: {}", path);
         Objects.requireNonNull(path);
         try {
-            List<Array<String>> result = arrayDao.readFromFile(path);
+            List<Array<String>> result = arrayDao.readAll(path);
             logger.debug(LOGGER_RESULT_MESSAGE, result);
             return result;
         } catch (DaoException e) {
