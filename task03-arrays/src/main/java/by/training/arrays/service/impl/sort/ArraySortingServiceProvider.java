@@ -1,7 +1,7 @@
 package by.training.arrays.service.impl.sort;
 
 import by.training.arrays.service.ArraySortingService;
-import by.training.arrays.service.exception.ServiceException;
+import by.training.arrays.service.ServiceException;
 
 import java.util.HashMap;
 import java.util.Map;

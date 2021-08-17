@@ -1,20 +1,18 @@
 package by.training.arrays.service.impl;
 
+import by.training.arrays.dao.ArrayDao;
+import by.training.arrays.dao.DaoException;
+import by.training.arrays.dao.DaoFactory;
 import by.training.arrays.entity.Array;
 import by.training.arrays.service.ArrayCreatorService;
-import by.training.arrays.service.exception.ServiceException;
+import by.training.arrays.service.ServiceException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
-import java.util.stream.Stream;
-
-import static java.util.function.Predicate.not;
 
 /**
  * The class {@code ArrayCreatorServiceImpl}
@@ -27,9 +25,10 @@ public class ArrayCreatorServiceImpl implements ArrayCreatorService {
     private static final Logger logger =
             LogManager.getLogger(ArrayCreatorServiceImpl.class);
 
-    private static final String SEPARATOR = "\\s+";
     private static final Random RANDOM = new Random();
     private static final String LOGGER_RESULT_MESSAGE = "result: {}";
+
+    private final ArrayDao arrayDao = DaoFactory.getInstance().getArrayDAO();
 
     @Override
     public Array<Integer> fillRandomized(int size, int minValue, int maxValue) {
@@ -58,19 +57,12 @@ public class ArrayCreatorServiceImpl implements ArrayCreatorService {
     public List<Array<String>> createFromFile(Path path) {
         logger.debug("received path: {}", path);
         Objects.requireNonNull(path);
-        try (Stream<String> stream = Files.lines(path)) {
-            List<Array<String>> result = stream
-                    .filter(not(String::isBlank))
-                    .map(String::strip)
-                    .map(line -> line.split(SEPARATOR))
-                    .map(Array::new)
-                    .toList();
+        try {
+            List<Array<String>> result = arrayDao.readFromFile(path);
             logger.debug(LOGGER_RESULT_MESSAGE, result);
             return result;
-        } catch (IOException e) {
-            throw new ServiceException("IO exception occurred", e);
-        } catch (RuntimeException e) {
-            throw new ServiceException("invalid Array in the file", e);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
         }
     }
 

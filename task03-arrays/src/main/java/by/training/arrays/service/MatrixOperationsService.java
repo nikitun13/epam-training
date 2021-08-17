@@ -1,7 +1,6 @@
 package by.training.arrays.service;
 
 import by.training.arrays.entity.Matrix;
-import by.training.arrays.service.exception.ServiceException;
 
 /**
  * Describes the interface of a service

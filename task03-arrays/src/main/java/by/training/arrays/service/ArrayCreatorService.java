@@ -1,7 +1,6 @@
 package by.training.arrays.service;
 
 import by.training.arrays.entity.Array;
-import by.training.arrays.service.exception.ServiceException;
 
 import java.nio.file.Path;
 import java.util.List;
@@ -41,8 +40,7 @@ public interface ArrayCreatorService {
      * @param path path to file.
      * @return list of {@code Array} with values
      * that are contained in the file.
-     * @throws ServiceException     if {@code Array} in the file is invalid
-     *                              or IO exception is occurred.
+     * @throws ServiceException     if IO exception is occurred.
      * @throws NullPointerException if {@code path} is {@code null}.
      */
     List<Array<String>> createFromFile(Path path);

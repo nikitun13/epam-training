@@ -1,4 +1,4 @@
-package by.training.arrays.service.exception;
+package by.training.arrays.service;
 
 public class ServiceException extends RuntimeException {
 

@@ -1,7 +1,7 @@
 package by.training.arrays.service.impl;
 
 import by.training.arrays.entity.Matrix;
-import by.training.arrays.service.exception.ServiceException;
+import by.training.arrays.service.ServiceException;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;

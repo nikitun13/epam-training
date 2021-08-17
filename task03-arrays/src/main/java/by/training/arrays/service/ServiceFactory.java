@@ -1,9 +1,5 @@
-package by.training.arrays.service.factory;
+package by.training.arrays.service;
 
-import by.training.arrays.service.ArrayCreatorService;
-import by.training.arrays.service.ArraySortingService;
-import by.training.arrays.service.MatrixCreatorService;
-import by.training.arrays.service.MatrixOperationsService;
 import by.training.arrays.service.impl.ArrayCreatorServiceImpl;
 import by.training.arrays.service.impl.MatrixCreatorServiceImpl;
 import by.training.arrays.service.impl.MatrixOperationsServiceImpl;

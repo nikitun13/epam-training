@@ -2,7 +2,7 @@ package by.training.arrays.service.impl;
 
 import by.training.arrays.entity.Matrix;
 import by.training.arrays.service.MatrixOperationsService;
-import by.training.arrays.service.exception.ServiceException;
+import by.training.arrays.service.ServiceException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
