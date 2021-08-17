@@ -5,9 +5,10 @@ import java.util.ResourceBundle;
 
 /**
  * The class {@code TextManager} is a utility class
- * that provides text from a {@code ResourceBundle} that contains in {@link Language}.
+ * that provides text from a {@code ResourceBundle}
+ * that contains in {@link Language}.<br/>
  * Also changes the language of the application.
- * Delegates execution of methods to {@link ResourceBundle}.
+ * Delegates execution of methods to {@link ResourceBundle}.<br/>
  * Contains {@link NumberFormat} for formatting numbers.
  *
  * @author Nikita Romanov
@@ -30,15 +31,18 @@ public final class TextManager {
      * @param key the key for the text from current {@code ResourceBundle}.
      * @return the text for the given key.
      * @throws NullPointerException               if {@code key} is {@code null}
-     * @throws java.util.MissingResourceException if no text for the given key can be found
-     * @throws ClassCastException                 if the object found for the given key is not a string
+     * @throws java.util.MissingResourceException if no text for
+     *                                            the given key can be found
+     * @throws ClassCastException                 if the object found for
+     *                                            the given key is not a string
      */
     public static String getText(String key) {
         return currentBundle.getString(key);
     }
 
     /**
-     * Determines whether the given {@code key} is contained in current {@code ResourceBundle}.
+     * Determines whether the given {@code key}
+     * is contained in current {@code ResourceBundle}.
      *
      * @param key the resource {@code key}.
      * @return {@code true} if the given {@code key} is
@@ -57,7 +61,8 @@ public final class TextManager {
      */
     public static void setLanguage(Language language) {
         currentBundle = language.getBundle();
-        currentNumberFormat = NumberFormat.getInstance(currentBundle.getLocale());
+        currentNumberFormat =
+                NumberFormat.getInstance(currentBundle.getLocale());
     }
 
     public static NumberFormat getCurrentNumberFormat() {
