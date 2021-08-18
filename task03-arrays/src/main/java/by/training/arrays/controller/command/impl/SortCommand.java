@@ -6,8 +6,8 @@ import by.training.arrays.controller.command.result.CommandStatus;
 import by.training.arrays.entity.Array;
 import by.training.arrays.service.ArrayCreatorService;
 import by.training.arrays.service.ArraySortingService;
-import by.training.arrays.service.exception.ServiceException;
-import by.training.arrays.service.factory.ServiceFactory;
+import by.training.arrays.service.ServiceException;
+import by.training.arrays.service.ServiceFactory;
 import by.training.arrays.view.manager.TextManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -80,8 +80,7 @@ public class SortCommand implements Command {
         try {
             Array<Integer> array =
                     arrayCreatorService.fillRandomized(
-                            size, minValue, maxValue
-                    );
+                            size, minValue, maxValue);
             Optional<ArraySortingService> maybeSoringService =
                     getSortingService(sortName);
             ArraySortingService sortingService = maybeSoringService.get();
@@ -118,29 +117,19 @@ public class SortCommand implements Command {
             return maybeCheckResult.get();
         }
         CommandResult result;
-        String stringURI = params[2];
+        String stringPath = params[2];
         try {
-            Path path = Path.of(stringURI);
+            Path path = Path.of(stringPath);
             List<Array<String>> arrays =
                     arrayCreatorService.createFromFile(path);
             ArraySortingService sortingService = maybeSoringService.get();
             StringBuilder inputArrays = new StringBuilder();
-            StringBuilder sortedArrays = new StringBuilder();
+            StringBuilder sortedArrays;
             arrays.forEach(array -> inputArrays.append(array).append(NEW_LINE));
             if (option.equals(INTEGERS_FROM_FILE_OPTION)) {
-                logger.debug("get as integers from file");
-                for (Array<String> array : arrays) {
-                    Array<Integer> integers =
-                            arrayCreatorService.convertToIntegerArray(array);
-                    sortingService.sort(integers);
-                    sortedArrays.append(integers).append(NEW_LINE);
-                }
+                sortedArrays = sortAsIntegers(arrays, sortingService);
             } else {
-                logger.debug("get as strings from file");
-                for (Array<String> array : arrays) {
-                    sortingService.sort(array);
-                    sortedArrays.append(array).append(NEW_LINE);
-                }
+                sortedArrays = sortAsStrings(arrays, sortingService);
             }
             result = new CommandResult(
                     CommandStatus.OK,
@@ -152,18 +141,16 @@ public class SortCommand implements Command {
                             + NEW_LINE
                             + sortedArrays
             );
-        } catch (
-                ServiceException e) {
-            if (e.getCause() instanceof IOException) {
+        } catch (ServiceException e) {
+            if (e.getCause().getCause() instanceof IOException) {
                 logger.error("io exception occurred", e);
                 result = new CommandResult(
                         CommandStatus.ERROR,
                         TextManager.getText("sort.ioException")
                 );
             } else {
-                logger.error(
-                        "element of array can't be parsed as an integer",
-                        e);
+                logger.error("element of array can't"
+                        + " be parsed as an integer", e);
                 result = new CommandResult(
                         CommandStatus.ERROR,
                         TextManager.getText("sort.invalidElements")
@@ -226,6 +213,30 @@ public class SortCommand implements Command {
             logger.error("unknown soring service", e);
         }
         return Optional.ofNullable(service);
+    }
+
+    private StringBuilder sortAsIntegers(List<Array<String>> arrays,
+                                         ArraySortingService service) {
+        StringBuilder sortResult = new StringBuilder();
+        logger.debug("get as integers from file");
+        for (Array<String> array : arrays) {
+            Array<Integer> integers =
+                    arrayCreatorService.convertToIntegerArray(array);
+            service.sort(integers);
+            sortResult.append(integers).append(NEW_LINE);
+        }
+        return sortResult;
+    }
+
+    private StringBuilder sortAsStrings(List<Array<String>> arrays,
+                                        ArraySortingService sortingService) {
+        StringBuilder sortResult = new StringBuilder();
+        logger.debug("get as strings from file");
+        for (Array<String> array : arrays) {
+            sortingService.sort(array);
+            sortResult.append(array).append(NEW_LINE);
+        }
+        return sortResult;
     }
 
     private boolean checkOption(String option) {
