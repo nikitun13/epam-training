@@ -65,6 +65,7 @@ public class HelpCommand implements Command {
             result = new CommandResult(
                     CommandStatus.INVALID_INPUT_PARAMETERS,
                     TextManager.getText("help.error.unknownCommand")
+                            + commandName
             );
         }
         return result;
