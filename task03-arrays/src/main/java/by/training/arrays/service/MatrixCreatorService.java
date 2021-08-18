@@ -1,7 +1,6 @@
 package by.training.arrays.service;
 
 import by.training.arrays.entity.Matrix;
-import by.training.arrays.service.exception.ServiceException;
 
 import java.nio.file.Path;
 import java.util.List;
@@ -22,7 +21,8 @@ public interface MatrixCreatorService {
      * @param minValue minimum value of random numbers inclusive.
      * @param maxValue maximum value of random numbers inclusive.
      * @throws NullPointerException if the {@code matrix} is {@code null}.
-     * @throws ServiceException     if {@code minValue} is greater than {@code maxValue}.
+     * @throws ServiceException     if {@code minValue}
+     *                              is greater than {@code maxValue}.
      */
     void fillRandomized(Matrix matrix, int minValue, int maxValue);
 
