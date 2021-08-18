@@ -14,5 +14,14 @@ import java.util.List;
  */
 public interface ArrayDao {
 
+    /**
+     * Reads all {@code Arrays} from {@code path}.
+     *
+     * @param path {@code path} to {@code Array} source.
+     * @return list of all {@code Arrays} that contain
+     * in the {@code path} source.
+     * @throws DaoException         if IO exception is occurred.
+     * @throws NullPointerException if {@code path} is {@code null}.
+     */
     List<Array<String>> readAll(Path path);
 }

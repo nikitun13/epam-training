@@ -15,6 +15,7 @@ import static java.util.function.Predicate.not;
 /**
  * The class {@code ArrayDaoImpl}
  * is a class that implements {@link ArrayDao}.
+ * Provides access to {@code Array} from file.
  *
  * @author Nikita Romanov
  */
