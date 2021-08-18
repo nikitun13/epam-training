@@ -5,6 +5,7 @@ import by.training.arrays.controller.command.CommandProvider;
 import by.training.arrays.controller.command.result.CommandResult;
 import by.training.arrays.controller.command.result.CommandStatus;
 import by.training.arrays.view.View;
+import by.training.arrays.view.manager.Language;
 import by.training.arrays.view.manager.TextManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -59,10 +60,13 @@ public class ControllerImpl implements Controller {
         view.print(INPUT_ICON);
         String lang = view.read();
         logger.debug("user typed: {}", lang);
-        executeCommand(CommandProvider.CHANGE_LANGUAGE_COMMAND
-                + WHITE_SPACE
-                + lang
-        );
+        String request = CommandProvider.CHANGE_LANGUAGE_COMMAND + WHITE_SPACE;
+        if (Language.isContains(lang.toUpperCase())) {
+            request += lang;
+        } else {
+            request += Language.EN;
+        }
+        executeCommand(request);
         view.println(TextManager.getText("menu.help"));
     }
 
