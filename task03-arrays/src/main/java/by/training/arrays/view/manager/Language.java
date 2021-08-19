@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
  */
 public enum Language {
 
-    EN(ResourceBundle.getBundle("lang.text", Locale.getDefault())),
+    EN(ResourceBundle.getBundle("lang.text", new Locale("en", "US"))),
     RU(ResourceBundle.getBundle("lang.text", new Locale("ru", "RU")));
 
     private final ResourceBundle bundle;
