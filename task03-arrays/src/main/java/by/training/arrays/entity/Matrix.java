@@ -15,8 +15,6 @@ import java.util.Objects;
  */
 public class Matrix {
 
-    private static final String BLANK = " ";
-
     /**
      * Array of arrays with elements.
      */
@@ -126,6 +124,7 @@ public class Matrix {
 
     @Override
     public String toString() {
+        final String BLANK = " ";
         StringBuilder s = new StringBuilder("\nMatrix : "
                 + getNumberOfRows() + "x"
                 + getNumberOfColumns() + "\n");
