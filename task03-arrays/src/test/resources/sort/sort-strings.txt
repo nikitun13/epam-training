@@ -7,3 +7,6 @@ a s d f g h j k z z c
 a b c d x y z
 z y x d c b a
 b a d c y x z
+a
+a b
+b a
