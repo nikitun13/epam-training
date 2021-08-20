@@ -39,7 +39,9 @@ public class Matrix {
         if (!isValidArray(elements)) {
             throw new MatrixException("Invalid array of arrays");
         }
-        this.elements = elements.clone();
+        this.elements = Arrays.stream(elements)
+                .map(int[]::clone)
+                .toArray(int[][]::new);
     }
 
     /**
