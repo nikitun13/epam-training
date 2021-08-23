@@ -2,6 +2,13 @@ package by.training.classes.entity;
 
 import java.util.Objects;
 
+/**
+ * The class {@code Word} represents entity
+ * of a word.<br>
+ * Contains string value of a {@code Word}.
+ *
+ * @author Nikita Romanov
+ */
 public class Word {
 
     private String value;
