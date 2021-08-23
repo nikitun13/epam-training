@@ -6,6 +6,14 @@ import java.util.Objects;
 
 import static java.util.stream.Collectors.joining;
 
+/**
+ * The class {@code Sentence} represents entity
+ * of a sentence.<br>
+ * Contains a list of words that form a {@code Sentence}.
+ *
+ * @author Nikita Romanov
+ * @see Word
+ */
 public class Sentence {
 
     private final List<Word> words;
@@ -37,9 +45,9 @@ public class Sentence {
 
     @Override
     public String toString() {
-        final String WHITE_SPACE = " ";
+        final String whiteSpace = " ";
         return words.stream()
                 .map(Word::toString)
-                .collect(joining(WHITE_SPACE));
+                .collect(joining(whiteSpace));
     }
 }
