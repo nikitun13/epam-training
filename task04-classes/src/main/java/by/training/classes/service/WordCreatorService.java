@@ -17,7 +17,8 @@ public interface WordCreatorService {
      *
      * @param value string value of the {@link Word}.
      * @return new {@code Word} from {@code value}.
-     * @throws ServiceException if {@code value} is null.
+     * @throws ServiceException if {@code value} is null
+     *                          or blank.
      */
     Word createWord(String value) throws ServiceException;
 }

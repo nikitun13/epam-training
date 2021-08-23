@@ -17,7 +17,8 @@ public interface SentenceCreatorService {
      *
      * @param value string value of the {@link Sentence}.
      * @return new {@code Sentence} from {@code value}.
-     * @throws ServiceException if {@code value} is null.
+     * @throws ServiceException if {@code value} is null
+     *                          or blank.
      */
     Sentence createSentence(String value) throws ServiceException;
 }
