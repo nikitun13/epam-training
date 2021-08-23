@@ -6,18 +6,26 @@ import java.util.Objects;
 
 import static java.util.stream.Collectors.joining;
 
+/**
+ * The class {@code Text} represents entity
+ * of a text.<br>
+ * Contains a list of {@link Sentence} that form a {@code Text}.
+ *
+ * @author Nikita Romanov
+ * @see Sentence
+ */
 public class Text {
 
-    private Sentence title;
+    private Sentence header;
     private final List<Sentence> sentences;
 
-    public Text(Sentence title, List<Sentence> sentences) {
-        this.title = title;
+    public Text(Sentence header, List<Sentence> sentences) {
+        this.header = header;
         this.sentences = new LinkedList<>(sentences);
     }
 
-    public void removeSentence(int index) {
-        sentences.remove(index);
+    public Sentence removeSentence(int index) {
+        return sentences.remove(index);
     }
 
     public void addSentence(int index, Sentence sentence) {
@@ -28,12 +36,12 @@ public class Text {
         sentences.add(sentence);
     }
 
-    public Sentence getTitle() {
-        return title;
+    public Sentence getHeader() {
+        return header;
     }
 
-    public void setTitle(Sentence title) {
-        this.title = title;
+    public void setHeader(Sentence header) {
+        this.header = header;
     }
 
     @Override
@@ -41,26 +49,27 @@ public class Text {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Text text = (Text) o;
-        return Objects.equals(title, text.title) && Objects.equals(sentences, text.sentences);
+        return Objects.equals(header, text.header)
+                && Objects.equals(sentences, text.sentences);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title, sentences);
+        return Objects.hash(header, sentences);
     }
 
     @Override
     public String toString() {
-        return title
+        return header
                 + System.lineSeparator()
                 + System.lineSeparator()
                 + getBody();
     }
 
     private String getBody() {
-        final String WHITE_SPACE = " ";
+        final String dotWithWhiteSpace = ". ";
         return sentences.stream()
                 .map(Sentence::toString)
-                .collect(joining(WHITE_SPACE));
+                .collect(joining(dotWithWhiteSpace));
     }
 }
