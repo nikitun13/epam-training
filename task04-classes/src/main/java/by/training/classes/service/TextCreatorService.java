@@ -13,13 +13,14 @@ public interface TextCreatorService {
 
     /**
      * Creates {@link Text} using
-     * string value of this {@code text}.
+     * string value of this {@code text}.<br/>
      * Header must be seperated from body by one empty line.
      *
      * @param value string value of the {@link Text}.
      * @return new {@code Text} from {@code value}.
      * @throws ServiceException if {@code value} is null
-     *                          or blank.
+     *                          or blank
+     *                          or there is no header in the {@code value}.
      */
     Text createText(String value) throws ServiceException;
 }
