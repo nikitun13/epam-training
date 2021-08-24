@@ -7,7 +7,7 @@ import java.nio.file.Path;
 /**
  * Describes the interface of a service
  * that provides saving, reading and deleting operations
- * with file using {@link Text} .
+ * with file using {@link Text}.
  *
  * @author Nikita Romanov
  * @see Text
@@ -20,7 +20,8 @@ public interface TextService {
      * @param path path to file with {@link Text}.
      * @return {@link Text} from the file.
      * @throws ServiceException if {@code path} is {@code null}
-     *                          or read exception occurred.
+     *                          or read exception occurred
+     *                          or invalid {@code Text} in the file.
      */
     Text readText(Path path) throws ServiceException;
 
