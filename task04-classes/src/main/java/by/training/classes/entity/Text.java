@@ -44,6 +44,10 @@ public class Text {
         this.header = header;
     }
 
+    public int getNumberOfSentences() {
+        return sentences.size();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -61,8 +65,7 @@ public class Text {
     @Override
     public String toString() {
         return header
-                + System.lineSeparator()
-                + System.lineSeparator()
+                + "\n\n"
                 + getBody();
     }
 
@@ -70,6 +73,6 @@ public class Text {
         final String dotWithWhiteSpace = ". ";
         return sentences.stream()
                 .map(Sentence::toString)
-                .collect(joining(dotWithWhiteSpace));
+                .collect(joining(dotWithWhiteSpace, "", "."));
     }
 }
