@@ -30,6 +30,10 @@ public class Sentence {
         words.add(word);
     }
 
+    public int getNumberOfWords() {
+        return words.size();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
