@@ -19,12 +19,12 @@ public class WordCreatorServiceImpl implements WordCreatorService {
 
     @Override
     public Word createWord(String value) throws ServiceException {
-        if (value == null || value.isBlank()) {
-            throw new ServiceException("value can't be null or blank");
-        }
         logger.debug("received value: {}", value);
+        if (value == null || value.isBlank()) {
+            throw new ServiceException("invalid value: " + value);
+        }
         Word result = new Word(value);
-        logger.debug("result: {}", result);
+        logger.debug("result Word: {}", result);
         return result;
     }
 }

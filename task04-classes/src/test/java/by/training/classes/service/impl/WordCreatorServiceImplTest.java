@@ -35,10 +35,10 @@ class WordCreatorServiceImplTest {
     @ParameterizedTest
     @NullAndEmptySource
     @Tag("createWord")
-    void throwServiceExceptionIfInputIsBlankOrNull(String value) {
+    void throwServiceExceptionIfInputIsInvalid(String value) {
         assertThrows(ServiceException.class,
                 () -> service.createWord(value),
-                () -> "must throw " + ServiceException.class.getName() + " for blank or null data"
+                () -> "must throw " + ServiceException.class.getName() + " for invalid input data"
         );
     }
 
@@ -51,7 +51,11 @@ class WordCreatorServiceImplTest {
         return Stream.of(
                 Arguments.of("String", new Word("String")),
                 Arguments.of("car", new Word("car")),
-                Arguments.of("дом", new Word("дом"))
+                Arguments.of("car\n", new Word("car\n")),
+                Arguments.of("дом", new Word("дом")),
+                Arguments.of("дом\n", new Word("дом\n")),
+                Arguments.of("\nдом", new Word("\nдом")),
+                Arguments.of("\nhouse", new Word("\nhouse"))
         );
     }
 }
