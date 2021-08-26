@@ -1,7 +1,5 @@
 package by.training.classes.controller;
 
-import by.training.classes.view.ConsoleView;
-import by.training.classes.view.View;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -17,8 +15,7 @@ public class Runner {
 
     public static void main(String[] args) {
         logger.info("application started");
-        View view = new ConsoleView();
-        Controller controller = new ControllerImpl(view);
+        Controller controller = new ControllerImpl();
         controller.run();
         logger.info("application finished");
     }

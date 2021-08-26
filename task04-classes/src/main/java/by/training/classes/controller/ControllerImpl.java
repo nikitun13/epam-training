@@ -5,6 +5,7 @@ import by.training.classes.controller.command.CommandProvider;
 import by.training.classes.controller.command.result.CommandResult;
 import by.training.classes.controller.command.result.CommandStatus;
 import by.training.classes.view.View;
+import by.training.classes.view.ViewFactory;
 import by.training.classes.view.manager.Language;
 import by.training.classes.view.manager.TextManager;
 import org.apache.logging.log4j.LogManager;
@@ -33,11 +34,7 @@ public class ControllerImpl implements Controller {
     private boolean enable = true;
     private final CommandProvider commandProvider =
             CommandProvider.getInstance();
-    private final View view;
-
-    public ControllerImpl(View view) {
-        this.view = view;
-    }
+    private final View view = ViewFactory.getInstance().getView();
 
     @Override
     public void run() {
@@ -119,6 +116,7 @@ public class ControllerImpl implements Controller {
                     TextManager.getText("error.error")
             );
             case EXIT -> switchEnableFlag();
+            default -> throw new IllegalStateException("Unexpected value: " + status);
         }
         commandResult.getMessage().ifPresent(view::println);
     }
