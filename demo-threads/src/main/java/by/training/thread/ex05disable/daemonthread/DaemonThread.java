@@ -1,4 +1,4 @@
-package by.training.thread.ex5disable.daemonthread;
+package by.training.thread.ex05disable.daemonthread;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

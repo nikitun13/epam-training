@@ -1,4 +1,4 @@
-package by.training.thread.ex5disable.threadtointerrupt;
+package by.training.thread.ex05disable.threadtointerrupt;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
