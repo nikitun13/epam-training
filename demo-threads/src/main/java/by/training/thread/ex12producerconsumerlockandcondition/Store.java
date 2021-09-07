@@ -13,11 +13,13 @@ public class Store {
 
     private int product = 0;
     private final ReentrantLock lock;
-    private final Condition condition;
+    private final Condition notFullCondition;
+    private final Condition notEmptyCondition;
 
     public Store() {
         lock = new ReentrantLock();
-        condition = lock.newCondition();
+        notFullCondition = lock.newCondition();
+        notEmptyCondition = lock.newCondition();
     }
 
     public void get() {
@@ -27,12 +29,12 @@ public class Store {
             // пока нет доступных товаров на складе, ожидаем
             while (product < 1) {
                 log.info(Thread.currentThread().getName() + " ожидает");
-                condition.await();
+                notEmptyCondition.await();
             }
             product--;
             log.info("Покупатель купил 1 товар");
             log.info("Товаров на складе: " + product);
-            condition.signalAll();
+            notFullCondition.signalAll();
         } catch (InterruptedException e) {
             log.error(e);
         } finally {
@@ -47,12 +49,12 @@ public class Store {
             // пока на складе 3 товара, ждем освобождения места
             while (product >= 3) {
                 log.info(Thread.currentThread().getName() + " ожидает");
-                condition.await();
+                notFullCondition.await();
             }
             product++;
             log.info("Производитель добавил 1 товар");
             log.info("Товаров на складе: " + product);
-            condition.signalAll();
+            notEmptyCondition.signalAll();
         } catch (InterruptedException e) {
             log.error(e);
         } finally {
