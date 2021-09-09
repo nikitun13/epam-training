@@ -1,7 +1,7 @@
-package by.training.multithreading.service.impl;
+package by.training.multithreading.service.validator.impl;
 
 import by.training.multithreading.entity.Matrix;
-import by.training.multithreading.service.Validator;
+import by.training.multithreading.service.validator.Validator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,12 +16,19 @@ import org.apache.logging.log4j.Logger;
  * @see Matrix
  * @see Validator
  */
-public class SquareMatrixWithEmptyMainDiagonalValidator
+public final class SquareMatrixWithEmptyMainDiagonalValidator
         implements Validator<Matrix> {
+
+    private static final SquareMatrixWithEmptyMainDiagonalValidator INSTANCE
+            = new SquareMatrixWithEmptyMainDiagonalValidator();
+
 
     private static final Logger log = LogManager.getLogger(
             SquareMatrixWithEmptyMainDiagonalValidator.class
     );
+
+    private SquareMatrixWithEmptyMainDiagonalValidator() {
+    }
 
     @Override
     public boolean isValid(Matrix o) {
@@ -35,5 +42,9 @@ public class SquareMatrixWithEmptyMainDiagonalValidator
             }
         }
         return true;
+    }
+
+    public static SquareMatrixWithEmptyMainDiagonalValidator getInstance() {
+        return INSTANCE;
     }
 }

@@ -1,9 +1,7 @@
-package by.training.multithreading.service.impl;
+package by.training.multithreading.service.validator.impl;
 
 import by.training.multithreading.entity.Matrix;
-import by.training.multithreading.service.Validator;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import by.training.multithreading.service.validator.Validator;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -12,7 +10,7 @@ import static org.testng.Assert.assertTrue;
 
 public class SquareMatrixWithEmptyMainDiagonalValidatorTest {
 
-    private Validator<Matrix> validator;
+    private final Validator<Matrix> validator = SquareMatrixWithEmptyMainDiagonalValidator.getInstance();
 
     @DataProvider(name = "validDataForIsValid")
     public static Object[][] createValidDataForIsValid() {
@@ -43,11 +41,6 @@ public class SquareMatrixWithEmptyMainDiagonalValidatorTest {
         };
     }
 
-    @BeforeClass
-    public void setUp() {
-        validator = new SquareMatrixWithEmptyMainDiagonalValidator();
-    }
-
     @Test(description = "test valid data for isValid method",
             dataProvider = "validDataForIsValid")
     public void testValidDataForIsValid(Matrix matrix) {
@@ -60,10 +53,5 @@ public class SquareMatrixWithEmptyMainDiagonalValidatorTest {
     public void testInvalidDataForIsValid(Matrix matrix) {
         boolean actual = validator.isValid(matrix);
         assertFalse(actual);
-    }
-
-    @AfterClass
-    public void tearDown() {
-        validator = null;
     }
 }

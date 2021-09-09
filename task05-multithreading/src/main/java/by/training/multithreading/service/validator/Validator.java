@@ -1,4 +1,4 @@
-package by.training.multithreading.service;
+package by.training.multithreading.service.validator;
 
 /**
  * Describes the interface of a service
