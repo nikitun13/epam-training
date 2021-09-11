@@ -44,7 +44,7 @@ public class MatrixCreatorServiceImpl implements MatrixCreatorService {
         } catch (DaoException e) {
             throw new ServiceException("dao exception occurred", e);
         } catch (InvalidPathException e) {
-            throw new ServiceException("invalid path {}", e);
+            throw new ServiceException("invalid path", e);
         }
     }
 }

@@ -11,7 +11,8 @@ import org.apache.logging.log4j.Logger;
  * is a class that implements {@link Validator}.<br/>
  * Validates {@link Matrix} entity.
  * Valid {@code matrix} are square {@code matrix} with empty main diagonal
- * (main diagonal contains only zeros).
+ * (main diagonal contains only zeros) and matrix size within the bounds
+ * that are specified in the {@code application.properties} file.
  *
  * @author Nikita Romanov
  * @see Matrix
@@ -35,8 +36,12 @@ public class SquareMatrixWithEmptyMainDiagonalValidator
             return false;
         }
         int size = o.getNumberOfRows();
-        int minSize = Integer.parseInt(PropertiesUtil.getProperty("matrix.minSize"));
-        int maxSize = Integer.parseInt(PropertiesUtil.getProperty("matrix.maxSize"));
+        int minSize = Integer.parseInt(
+                PropertiesUtil.getProperty("matrix.minSize")
+        );
+        int maxSize = Integer.parseInt(
+                PropertiesUtil.getProperty("matrix.maxSize")
+        );
         if (size < minSize || size > maxSize) {
             return false;
         }
