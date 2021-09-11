@@ -2,6 +2,7 @@ package by.training.multithreading.service.validator.impl;
 
 import by.training.multithreading.entity.Matrix;
 import by.training.multithreading.service.validator.Validator;
+import by.training.multithreading.util.PropertiesUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,16 +17,13 @@ import org.apache.logging.log4j.Logger;
  * @see Matrix
  * @see Validator
  */
-public final class SquareMatrixWithEmptyMainDiagonalValidator
+public class SquareMatrixWithEmptyMainDiagonalValidator
         implements Validator<Matrix> {
 
     private static final SquareMatrixWithEmptyMainDiagonalValidator INSTANCE
             = new SquareMatrixWithEmptyMainDiagonalValidator();
-
-
     private static final Logger log = LogManager.getLogger(
-            SquareMatrixWithEmptyMainDiagonalValidator.class
-    );
+            SquareMatrixWithEmptyMainDiagonalValidator.class);
 
     private SquareMatrixWithEmptyMainDiagonalValidator() {
     }
@@ -36,7 +34,13 @@ public final class SquareMatrixWithEmptyMainDiagonalValidator
         if (o == null || o.getNumberOfColumns() != o.getNumberOfRows()) {
             return false;
         }
-        for (int i = 0; i < o.getNumberOfRows(); i++) {
+        int size = o.getNumberOfRows();
+        int minSize = Integer.parseInt(PropertiesUtil.getProperty("matrix.minSize"));
+        int maxSize = Integer.parseInt(PropertiesUtil.getProperty("matrix.maxSize"));
+        if (size < minSize || size > maxSize) {
+            return false;
+        }
+        for (int i = 0; i < size; i++) {
             if (o.getElement(i, i) != 0) {
                 return false;
             }
