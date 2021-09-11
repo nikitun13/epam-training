@@ -19,7 +19,7 @@ public interface MatrixDao {
      * @param path {@code path} to file with {@code Matrix}.
      * @return {@code Matrix} from the file.
      * @throws DaoException if IO exception is occurred
-     *                      or {@code path} is {@code null}.
+     *                      or {@code path} is invalid.
      */
     Matrix read(Path path) throws DaoException;
 }
