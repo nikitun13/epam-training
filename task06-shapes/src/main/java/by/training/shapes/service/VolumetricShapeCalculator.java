@@ -18,14 +18,16 @@ public interface VolumetricShapeCalculator<T extends VolumetricShape> {
      *
      * @param shape volumetric shape for calculation.
      * @return surface area of the {@code shape}.
+     * @throws ServiceException if shape is invalid.
      */
-    double calculateSurfaceArea(T shape);
+    double calculateSurfaceArea(T shape) throws ServiceException;
 
     /**
      * Calculates volume of the {@code shape}.
      *
      * @param shape volumetric shape for calculation.
      * @return volume of the {@code shape}.
+     * @throws ServiceException if shape is invalid.
      */
-    double calculateVolume(T shape);
+    double calculateVolume(T shape) throws ServiceException;
 }
