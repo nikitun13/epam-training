@@ -22,7 +22,7 @@ public class BallValidatorImpl implements Validator<Ball> {
     @Override
     public boolean isValid(final Ball shape) {
         return shape != null
-                && shape.getCenter() != null
+                && shape.getCenterPoint() != null
                 && shape.getRadius() >= 0d;
     }
 

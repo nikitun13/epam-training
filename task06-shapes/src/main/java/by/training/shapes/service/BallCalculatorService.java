@@ -21,7 +21,8 @@ public interface BallCalculatorService
      * @param plane coordinate plane for dissection.
      * @return ratio of the parts.
      * @throws ServiceException if {@code ball} is invalid
-     *                          or {@code plane} is {@code null}.l
+     *                          or {@code plane} doesn't dissect {@code ball}
+     *                          or {@code plane} is {@code null}.
      */
     double calculateRatioOfPartsDissectedByPlane(Ball ball, Plane plane)
             throws ServiceException;

@@ -19,7 +19,7 @@ public class Ball implements VolumetricShape {
     /**
      * Center point of the {@code Ball}.
      */
-    private Point center;
+    private Point centerPoint;
 
     /**
      * Radius of the {@code Ball}.
@@ -29,15 +29,15 @@ public class Ball implements VolumetricShape {
     /**
      * All args constructor.
      *
-     * @param newId     id of the {@code Ball}.
-     * @param newRadius radius of the {@code Ball}.
-     * @param newCenter center point of the {@code Ball}.
+     * @param newId          id of the {@code Ball}.
+     * @param newRadius      radius of the {@code Ball}.
+     * @param newCenterPoint center point of the {@code Ball}.
      */
     public Ball(final int newId,
                 final double newRadius,
-                final Point newCenter) {
+                final Point newCenterPoint) {
         id = newId;
-        center = newCenter;
+        centerPoint = newCenterPoint;
         radius = newRadius;
     }
 
@@ -46,8 +46,8 @@ public class Ball implements VolumetricShape {
      *
      * @return point of the center.
      */
-    public Point getCenter() {
-        return center;
+    public Point getCenterPoint() {
+        return centerPoint;
     }
 
     /**
@@ -55,8 +55,8 @@ public class Ball implements VolumetricShape {
      *
      * @param newCenter new value of the center {@code point}.
      */
-    public void setCenter(final Point newCenter) {
-        center = newCenter;
+    public void setCenterPoint(final Point newCenter) {
+        centerPoint = newCenter;
     }
 
     /**
@@ -88,19 +88,19 @@ public class Ball implements VolumetricShape {
         Ball ball = (Ball) o;
         return id == ball.id
                 && Double.compare(ball.radius, radius) == 0
-                && Objects.equals(center, ball.center);
+                && Objects.equals(centerPoint, ball.centerPoint);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, center, radius);
+        return Objects.hash(id, centerPoint, radius);
     }
 
     @Override
     public String toString() {
         return "Ball{"
                 + "id=" + id
-                + ", center=" + center
+                + ", centerPoint=" + centerPoint
                 + ", radius=" + radius
                 + '}';
     }

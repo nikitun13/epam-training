@@ -49,6 +49,20 @@ public interface VolumetricShape {
         }
 
         /**
+         * Returns the coordinate value on the given {@code axis}.
+         *
+         * @param axis axis along which need to get the value.
+         * @return value on the given {@code axis}.
+         */
+        public double getAxisValue(final Axis axis) {
+            return switch (axis) {
+                case X_AXIS -> x;
+                case Y_AXIS -> y;
+                case Z_AXIS -> z;
+            };
+        }
+
+        /**
          * Getter.
          *
          * @return {@code x} value

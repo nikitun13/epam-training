@@ -2,7 +2,6 @@ package by.training.shapes.service;
 
 import by.training.shapes.entity.VolumetricShape;
 
-
 /**
  * Describes the interface of a service
  * that does typical calculations for {@link VolumetricShape}.
@@ -11,7 +10,7 @@ import by.training.shapes.entity.VolumetricShape;
  * @author Nikita Romanov
  * @see VolumetricShape
  */
-public interface VolumetricShapeCalculator<T extends VolumetricShape> {
+public interface VolumetricShapeCalculatorService<T extends VolumetricShape> {
 
     /**
      * Calculates surface area of the {@code shape}.
