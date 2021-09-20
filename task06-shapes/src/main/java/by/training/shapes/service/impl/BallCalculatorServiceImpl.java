@@ -55,22 +55,22 @@ public class BallCalculatorServiceImpl implements BallCalculatorService {
     /**
      * Invalid ball message for exception.
      */
-    private static final String INVALID_BALL_EXCEPTION_MESSAGE = "invalid ball";
+    private static final String INVALID_BALL_EXCEPTION_MESSAGE = "invalid ball: ";
 
     /**
      * Validator for a {@code Ball}.
      */
-    private final Validator<Ball> validator =
-            BallValidatorImpl.getInstance();
+    private final Validator<Ball> validator
+            = BallValidatorImpl.getInstance();
 
     @Override
-    public double calculateSurfaceArea(final Ball shape)
+    public double calculateSurfaceArea(final Ball ball)
             throws ServiceException {
-        log.debug(RECEIVED_BALL_LOG_MESSAGE, shape);
-        if (!validator.isValid(shape)) {
-            throw new ServiceException(INVALID_BALL_EXCEPTION_MESSAGE + shape);
+        log.debug(RECEIVED_BALL_LOG_MESSAGE, ball);
+        if (!validator.isValid(ball)) {
+            throw new ServiceException(INVALID_BALL_EXCEPTION_MESSAGE + ball);
         }
-        double radius = shape.getRadius();
+        double radius = ball.getRadius();
         double result = AREA_COEFFICIENT
                 * Math.PI
                 * Math.pow(radius, SECOND_POWER);
@@ -79,12 +79,12 @@ public class BallCalculatorServiceImpl implements BallCalculatorService {
     }
 
     @Override
-    public double calculateVolume(final Ball shape) throws ServiceException {
-        log.debug(RECEIVED_BALL_LOG_MESSAGE, shape);
-        if (!validator.isValid(shape)) {
-            throw new ServiceException(INVALID_BALL_EXCEPTION_MESSAGE + shape);
+    public double calculateVolume(final Ball ball) throws ServiceException {
+        log.debug(RECEIVED_BALL_LOG_MESSAGE, ball);
+        if (!validator.isValid(ball)) {
+            throw new ServiceException(INVALID_BALL_EXCEPTION_MESSAGE + ball);
         }
-        double radius = shape.getRadius();
+        double radius = ball.getRadius();
         double result = VOLUME_FIRST_COEFFICIENT
                 * Math.PI
                 * Math.pow(radius, THIRD_POWER)

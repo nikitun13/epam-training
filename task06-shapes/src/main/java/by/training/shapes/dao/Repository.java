@@ -27,7 +27,7 @@ public interface Repository<T> {
      * @param id {@code id} of the entity.
      * @return optional of entity with given {@code id}.
      */
-    Optional<T> get(int id);
+    Optional<T> findById(int id);
 
     /**
      * Updates data of the {@code entity}.
@@ -39,13 +39,13 @@ public interface Repository<T> {
     boolean update(T entity);
 
     /**
-     * Deletes {@code entity} from the repository.
+     * Removes {@code entity} from the repository.
      *
      * @param entity {@code entity} to be deleted.
      * @return {@code true} if {@code entity} was deleted successfully,
      * {@code false} otherwise.
      */
-    boolean delete(T entity);
+    boolean remove(T entity);
 
     /**
      * Finds all entities from the repository.
@@ -53,4 +53,14 @@ public interface Repository<T> {
      * @return list of all entities from the repository.
      */
     List<T> getAll();
+
+    /**
+     * Finds {@code entity} from repository
+     * by given {@code specification}.
+     *
+     * @param specification specification for filtering data.
+     * @return list of entities matching the {@code specification}.
+     * @see Specification
+     */
+    List<T> findBySpecification(Specification<T> specification);
 }
