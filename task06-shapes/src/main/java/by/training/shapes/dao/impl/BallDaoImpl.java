@@ -39,6 +39,7 @@ public class BallDaoImpl implements BallDao {
 
     @Override
     public List<Ball> getAllFromFile(final Path path) throws DaoException {
+        log.debug("received path: {}", path);
         List<String> allLines = reader.readAllLines(path);
         log.debug("read lines: {}", allLines);
         List<Ball> entities = allLines.stream()
