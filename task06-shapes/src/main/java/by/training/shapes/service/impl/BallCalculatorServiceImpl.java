@@ -6,8 +6,8 @@ import by.training.shapes.entity.Plane;
 import by.training.shapes.entity.VolumetricShape;
 import by.training.shapes.service.BallCalculatorService;
 import by.training.shapes.service.ServiceException;
+import by.training.shapes.service.validator.BallValidatorImpl;
 import by.training.shapes.service.validator.Validator;
-import by.training.shapes.service.validator.impl.BallValidatorImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -55,7 +55,8 @@ public class BallCalculatorServiceImpl implements BallCalculatorService {
     /**
      * Invalid ball message for exception.
      */
-    private static final String INVALID_BALL_EXCEPTION_MESSAGE = "invalid ball: ";
+    private static final String INVALID_BALL_EXCEPTION_MESSAGE
+            = "invalid ball: ";
 
     /**
      * Validator for a {@code Ball}.

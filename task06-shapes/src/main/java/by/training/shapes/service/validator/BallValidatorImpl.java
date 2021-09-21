@@ -1,7 +1,6 @@
-package by.training.shapes.service.validator.impl;
+package by.training.shapes.service.validator;
 
 import by.training.shapes.entity.Ball;
-import by.training.shapes.service.validator.Validator;
 
 /**
  * The class {@code BallValidatorImpl}

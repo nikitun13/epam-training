@@ -6,8 +6,8 @@ import by.training.shapes.entity.Plane;
 import by.training.shapes.entity.VolumetricShape;
 import by.training.shapes.service.BallConditionCheckerService;
 import by.training.shapes.service.ServiceException;
+import by.training.shapes.service.validator.BallValidatorImpl;
 import by.training.shapes.service.validator.Validator;
-import by.training.shapes.service.validator.impl.BallValidatorImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
