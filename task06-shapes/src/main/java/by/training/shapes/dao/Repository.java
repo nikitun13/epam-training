@@ -5,7 +5,7 @@ import java.util.Optional;
 
 /**
  * Describes interface of entity repository.<br/>
- * Provides access to data.
+ * Provides access to data and ensures uniqueness of entities' {@code id}.
  *
  * @param <T> type of the entity.
  * @author Nikita Romanov
@@ -13,13 +13,24 @@ import java.util.Optional;
 public interface Repository<T> {
 
     /**
-     * Adds new {@code entity} to the repository.
+     * Adds new {@code entity} to the repository.<br/>
+     * Assigns {@code id} to this entity.
      *
      * @param entity new {@code entity} to be added.
      * @return {@code true} if {@code entity} was added successfully,
      * {@code false} otherwise.
      */
     boolean add(T entity);
+
+    /**
+     * Adds new {@code entities} to the repository.<br/>
+     * Assigns {@code id} to entities.
+     *
+     * @param entities new {@code entities} to be added.
+     * @return {@code true} if {@code entities} were added successfully,
+     * {@code false} otherwise.
+     */
+    boolean addAll(List<T> entities);
 
     /**
      * Finds {@code entity} from repository by its {@code id}.
