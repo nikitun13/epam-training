@@ -1,5 +1,7 @@
 package by.training.shapes.dao;
 
+import by.training.shapes.dao.specification.Specification;
+
 import java.util.List;
 import java.util.Optional;
 
