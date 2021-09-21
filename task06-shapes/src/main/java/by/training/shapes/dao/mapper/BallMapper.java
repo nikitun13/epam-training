@@ -40,6 +40,9 @@ public final class BallMapper implements Mapper<Ball> {
     @Override
     public boolean isValidLine(final String line) {
         log.debug("received line: {}", line);
+        if (line == null) {
+            return false;
+        }
         final String doubleValueRegex = "[+-]?\\d+(\\.\\d+)?";
         String[] args = line.split(SEPARATOR_REGEX);
         String arrayToString = Arrays.toString(args);
