@@ -29,7 +29,7 @@ public final class ReaderImpl implements Reader {
         try {
             return Files.readAllLines(path);
         } catch (IOException e) {
-            throw new DaoException();
+            throw new DaoException("IO exception occurred", e);
         }
     }
 

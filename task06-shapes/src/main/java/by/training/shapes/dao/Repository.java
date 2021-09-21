@@ -27,10 +27,8 @@ public interface Repository<T> {
      * Assigns {@code id} to entities.
      *
      * @param entities new {@code entities} to be added.
-     * @return {@code true} if {@code entities} were added successfully,
-     * {@code false} otherwise.
      */
-    boolean addAll(List<T> entities);
+    void addAll(List<T> entities);
 
     /**
      * Finds {@code entity} from repository by its {@code id}.

@@ -56,7 +56,7 @@ class BallMapperTest {
     }
 
     public Stream<Arguments> invalidDataForIsValidLine() throws IOException {
-        Path path = Path.of("src/test/resources/ball/02-ball-allInvalid.txt");
+        Path path = Path.of("src/test/resources/ball/01-ball-allInvalid.txt");
         return Files.readAllLines(path).stream()
                 .map(Arguments::of);
     }
