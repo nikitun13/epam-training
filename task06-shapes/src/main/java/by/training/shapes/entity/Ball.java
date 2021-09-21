@@ -12,9 +12,10 @@ import java.util.Objects;
 public class Ball implements VolumetricShape {
 
     /**
-     * Unique identifier of a {@code Ball}.
+     * Unique identifier of a {@code Ball}.<br/>
+     * Uniqueness is provided by developer.
      */
-    private final int id;
+    private int id;
 
     /**
      * Center point of the {@code Ball}.
@@ -39,6 +40,36 @@ public class Ball implements VolumetricShape {
         id = newId;
         centerPoint = newCenterPoint;
         radius = newRadius;
+    }
+
+    /**
+     * All args constructor without {@code id}.
+     *
+     * @param newRadius      radius of the {@code Ball}.
+     * @param newCenterPoint center point of the {@code Ball}.
+     */
+    public Ball(final double newRadius,
+                final Point newCenterPoint) {
+        centerPoint = newCenterPoint;
+        radius = newRadius;
+    }
+
+    /**
+     * Getter.
+     *
+     * @return {@code id} of the {@code ball}.
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * Setter.
+     *
+     * @param newId new value of the {@code id}.
+     */
+    public void setId(final int newId) {
+        id = newId;
     }
 
     /**
