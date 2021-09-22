@@ -8,6 +8,7 @@ import by.training.shapes.entity.Ball;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -83,9 +84,9 @@ public class BallRepositoryImpl implements Repository<Ball> {
     public List<Ball> findBySpecification(
             final Specification<Ball> specification) {
         log.debug("received specification: {}", specification);
-        List<Ball> specifiedBalls = storage.getALlValues().stream()
+        List<Ball> specifiedBalls = new ArrayList<>(storage.getALlValues().stream()
                 .filter(specification::isSpecified)
-                .toList();
+                .toList());
         specification.getOptionalComparator().ifPresent(specifiedBalls::sort);
         log.debug("specified entities: {}", specifiedBalls);
         return specifiedBalls;
