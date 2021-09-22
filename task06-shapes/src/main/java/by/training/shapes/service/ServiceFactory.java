@@ -2,8 +2,10 @@ package by.training.shapes.service;
 
 
 import by.training.shapes.entity.Ball;
+import by.training.shapes.entity.BallRegistrar;
 import by.training.shapes.service.impl.BallCalculatorServiceImpl;
 import by.training.shapes.service.impl.BallConditionCheckerServiceImpl;
+import by.training.shapes.service.impl.BallRegistrarServiceImpl;
 import by.training.shapes.service.impl.BallServiceImpl;
 
 /**
@@ -22,11 +24,13 @@ public final class ServiceFactory {
     private final BallCalculatorService ballCalculatorService;
     private final BallConditionCheckerService ballConditionCheckerService;
     private final EntityService<Ball> ballService;
+    private final RegistrarService<Ball, BallRegistrar> ballRegistrarService;
 
     private ServiceFactory() {
         ballCalculatorService = new BallCalculatorServiceImpl();
         ballConditionCheckerService = new BallConditionCheckerServiceImpl();
         ballService = new BallServiceImpl();
+        ballRegistrarService = new BallRegistrarServiceImpl();
     }
 
     public BallCalculatorService getBallCalculatorService() {
@@ -39,6 +43,10 @@ public final class ServiceFactory {
 
     public EntityService<Ball> getBallService() {
         return ballService;
+    }
+
+    public RegistrarService<Ball, BallRegistrar> getBallRegistrarService() {
+        return ballRegistrarService;
     }
 
     /**
