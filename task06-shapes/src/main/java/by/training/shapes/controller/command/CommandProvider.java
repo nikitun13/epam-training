@@ -1,9 +1,6 @@
 package by.training.shapes.controller.command;
 
-import by.training.shapes.controller.command.impl.ChangeLanguageCommand;
-import by.training.shapes.controller.command.impl.ExitCommand;
-import by.training.shapes.controller.command.impl.HelpCommand;
-import by.training.shapes.controller.command.impl.UnknownCommand;
+import by.training.shapes.controller.command.impl.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,7 +19,7 @@ public final class CommandProvider {
     public static final String CHANGE_LANGUAGE_COMMAND = "chlang";
     public static final String EXIT_COMMAND = "exit";
     public static final String HELP_COMMAND = "help";
-    public static final String TEXT_COMMAND = "text";
+    public static final String BALL_COMMAND = "ball";
 
     private final Map<String, Command> repository = new HashMap<>();
     private final Command unknownCommand = new UnknownCommand();
@@ -31,6 +28,7 @@ public final class CommandProvider {
         repository.put(CHANGE_LANGUAGE_COMMAND, new ChangeLanguageCommand());
         repository.put(EXIT_COMMAND, new ExitCommand());
         repository.put(HELP_COMMAND, new HelpCommand());
+        repository.put(BALL_COMMAND, new BallCommand());
     }
 
     public static CommandProvider getInstance() {
