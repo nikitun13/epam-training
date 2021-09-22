@@ -2,9 +2,11 @@ package by.training.shapes.dao.impl;
 
 import by.training.shapes.dao.Repository;
 import by.training.shapes.dao.specification.Specification;
+import by.training.shapes.dao.storage.BallRegistrarStorageImpl;
 import by.training.shapes.dao.storage.BallStorageImpl;
 import by.training.shapes.dao.storage.Storage;
 import by.training.shapes.entity.Ball;
+import by.training.shapes.entity.BallRegistrar;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -38,6 +40,11 @@ public class BallRepositoryImpl implements Repository<Ball> {
     private final Storage<Integer, Ball> storage
             = BallStorageImpl.getInstance();
     /**
+     * Storage of {@link BallRegistrar} entities.
+     */
+    private final Storage<Integer, BallRegistrar> ballRegistrarStorage
+            = BallRegistrarStorageImpl.getInstance();
+    /**
      * ID generator for entities.
      */
     private int idGenerator;
@@ -48,7 +55,13 @@ public class BallRepositoryImpl implements Repository<Ball> {
         int generatedId = ++idGenerator;
         entity.setId(generatedId);
         log.debug("generated id: {}", generatedId);
-        return storage.add(generatedId, entity);
+        boolean added = storage.add(generatedId, entity);
+        if (added) {
+            BallRegistrar ballRegistrar = new BallRegistrar(generatedId);
+            entity.subscribe(ballRegistrar);
+            ballRegistrarStorage.add(generatedId, ballRegistrar);
+        }
+        return added;
     }
 
     @Override
@@ -72,7 +85,15 @@ public class BallRepositoryImpl implements Repository<Ball> {
     @Override
     public boolean remove(final Ball entity) {
         log.debug(RECEIVED_BALL_LOGGER_MESSAGE, entity);
-        return storage.remove(entity.getId(), entity);
+        boolean removed = storage.remove(entity.getId(), entity);
+        if (removed) {
+            BallRegistrar ballRegistrar
+                    = ballRegistrarStorage.getByKey(entity.getId());
+            ballRegistrarStorage.remove(
+                    ballRegistrar.getBallId(), ballRegistrar
+            );
+        }
+        return removed;
     }
 
     @Override
@@ -84,9 +105,11 @@ public class BallRepositoryImpl implements Repository<Ball> {
     public List<Ball> findBySpecification(
             final Specification<Ball> specification) {
         log.debug("received specification: {}", specification);
-        List<Ball> specifiedBalls = new ArrayList<>(storage.getALlValues().stream()
-                .filter(specification::isSpecified)
-                .toList());
+        List<Ball> specifiedBalls = new ArrayList<>(
+                storage.getALlValues().stream()
+                        .filter(specification::isSpecified)
+                        .toList()
+        );
         specification.getOptionalComparator().ifPresent(specifiedBalls::sort);
         log.debug("specified entities: {}", specifiedBalls);
         return specifiedBalls;
