@@ -20,5 +20,5 @@ public interface RegistrarService<T extends Publisher<T>, R extends Subscriber<T
      * @param entity entity which {@code registrar} is need to be returned.
      * @return optional entity's {@code registrar}.
      */
-    Optional<R> getRegistrar(T entity);
+    Optional<R> getRegistrar(T entity) throws ServiceException;
 }

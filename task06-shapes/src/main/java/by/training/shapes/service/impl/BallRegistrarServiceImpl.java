@@ -5,6 +5,7 @@ import by.training.shapes.dao.storage.Storage;
 import by.training.shapes.entity.Ball;
 import by.training.shapes.entity.BallRegistrar;
 import by.training.shapes.service.RegistrarService;
+import by.training.shapes.service.ServiceException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -26,12 +27,19 @@ public class BallRegistrarServiceImpl
     private static final Logger log
             = LogManager.getLogger(BallRegistrarServiceImpl.class);
 
+    /**
+     * {@link BallRegistrar} storage.
+     */
     private final Storage<Integer, BallRegistrar> storage
             = BallRegistrarStorageImpl.getInstance();
 
     @Override
-    public Optional<BallRegistrar> getRegistrar(final Ball entity) {
+    public Optional<BallRegistrar> getRegistrar(final Ball entity)
+            throws ServiceException {
         log.debug("received entity: {}", entity);
+        if (entity == null) {
+            throw new ServiceException("ball can't be null");
+        }
         BallRegistrar result = storage.getByKey(entity.getId());
         log.debug("result: {}", result);
         return Optional.ofNullable(result);
