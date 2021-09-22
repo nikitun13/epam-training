@@ -9,6 +9,7 @@ import java.util.Optional;
  * Describes the interface of a service that
  * provides access to entity storage.
  *
+ * @param <T> type of {@code entity}.
  * @author Nikita Romanov
  */
 public interface EntityService<T> {
@@ -17,7 +18,9 @@ public interface EntityService<T> {
      * Adds entities from the file to the entity repository.
      *
      * @param pathToFile path to file with data.
-     * @throws ServiceException if DAO exception occurred.
+     * @throws ServiceException if DAO exception occurred
+     *                          or {@code pathToFile}
+     *                          is {@code null} or invalid.
      */
     void addEntitiesFromFile(String pathToFile) throws ServiceException;
 
