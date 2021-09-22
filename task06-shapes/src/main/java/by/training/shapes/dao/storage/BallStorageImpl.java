@@ -115,6 +115,11 @@ public final class BallStorageImpl implements Storage<Integer, Ball> {
         return isRemoved;
     }
 
+    @Override
+    public void removeAll() {
+        dataStorage.clear();
+    }
+
     /**
      * Getter for singleton instance.
      *

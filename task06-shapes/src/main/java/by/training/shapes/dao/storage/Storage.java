@@ -70,4 +70,9 @@ public interface Storage<K, V> {
      * successfully, {@code false} otherwise.
      */
     boolean remove(K key, V value);
+
+    /**
+     * Removes all entities from the storage.
+     */
+    void removeAll();
 }
