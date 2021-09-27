@@ -1,0 +1,62 @@
+package by.training.information.dao.parser;
+
+import by.training.information.entity.Symbol;
+import by.training.information.entity.TextComponent;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.List;
+import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+class SymbolParserTest {
+
+    private SymbolParser parser;
+
+    @BeforeAll
+    void setUp() {
+        parser = new SymbolParser();
+    }
+
+    @ParameterizedTest
+    @MethodSource("dataForParse")
+    @Tag("parse")
+    void shouldParseInputStringToSymbols(String input, List<Symbol> expected) {
+        List<? extends TextComponent> actual = parser.parse(input);
+        assertEquals(expected, actual);
+    }
+
+    @AfterAll
+    void tearDown() {
+        parser = null;
+    }
+
+    public Stream<Arguments> dataForParse() {
+        return Stream.of(
+                Arguments.of("hello", List.of(Symbol.valueOf('h'), Symbol.valueOf('e'), Symbol.valueOf('l'), Symbol.valueOf('l'), Symbol.valueOf('o'))),
+                Arguments.of("h", List.of(Symbol.valueOf('h'))),
+                Arguments.of(" ", List.of(Symbol.valueOf(' '))),
+                Arguments.of("?", List.of(Symbol.valueOf('?'))),
+                Arguments.of(";", List.of(Symbol.valueOf(';'))),
+                Arguments.of("-", List.of(Symbol.valueOf('-'))),
+                Arguments.of("he", List.of(Symbol.valueOf('h'), Symbol.valueOf('e'))),
+                Arguments.of("?!", List.of(Symbol.valueOf('?'), Symbol.valueOf('!'))),
+                Arguments.of("...", List.of(Symbol.valueOf('.'), Symbol.valueOf('.'), Symbol.valueOf('.'))),
+                Arguments.of("hel-lo", List.of(Symbol.valueOf('h'), Symbol.valueOf('e'), Symbol.valueOf('l'), Symbol.valueOf('-'), Symbol.valueOf('l'), Symbol.valueOf('o'))),
+                Arguments.of("hel-lo its me!",
+                        List.of(
+                                Symbol.valueOf('h'), Symbol.valueOf('e'), Symbol.valueOf('l'), Symbol.valueOf('-'), Symbol.valueOf('l'), Symbol.valueOf('o'), Symbol.valueOf(' '),
+                                Symbol.valueOf('i'), Symbol.valueOf('t'), Symbol.valueOf('s'), Symbol.valueOf(' '),
+                                Symbol.valueOf('m'), Symbol.valueOf('e'), Symbol.valueOf('!')
+                        )
+                )
+        );
+    }
+}
