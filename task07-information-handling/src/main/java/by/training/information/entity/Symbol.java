@@ -1,5 +1,7 @@
 package by.training.information.entity;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -10,24 +12,54 @@ import java.util.Objects;
  *
  * @author Nikita Romvanov
  */
-public class Symbol implements TextComponent {
+public final class Symbol implements TextComponent {
 
     /**
-     * Char value of the symbol.
+     * Cache of {@code Symbol} values.
+     */
+    private static final Map<Character, Symbol> SYMBOL_CACHE;
+
+    static {
+        SYMBOL_CACHE = new HashMap<>();
+    }
+
+    /**
+     * Char value of the {@code Symbol}.
      */
     private final char value;
 
-    public Symbol(final char value) {
+    private Symbol(final char value) {
         this.value = value;
-    }
-
-    public char getValue() {
-        return value;
     }
 
     @Override
     public String collect() {
         return String.valueOf(value);
+    }
+
+    /**
+     * Returns {@code Symbol} representation of {@code character}.
+     *
+     * @param character character to be converted to {@code Symbol}.
+     * @return {@code Symbol} representation of {@code character}.
+     */
+    public static Symbol valueOf(final char character) {
+        if (SYMBOL_CACHE.containsKey(character)) {
+            return SYMBOL_CACHE.get(character);
+        } else {
+            Symbol symbol = new Symbol(character);
+            SYMBOL_CACHE.put(character, symbol);
+            return symbol;
+        }
+    }
+
+    /**
+     * Getter.
+     *
+     * @return {@code Symbol} char value.
+     */
+    public char getValue() {
+        return value;
     }
 
     @Override
