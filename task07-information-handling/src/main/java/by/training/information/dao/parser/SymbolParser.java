@@ -25,12 +25,12 @@ public class SymbolParser implements TextComponentParser {
 
     @Override
     public List<? extends TextComponent> parse(final String input) {
-        log.debug("received input: {}", input);
+        log.debug("received input for SymbolParser: {}", input);
         List<Symbol> symbols = input.chars()
                 .mapToObj(codePoint -> (char) codePoint)
                 .map(Symbol::valueOf)
                 .toList();
-        log.debug("result: {}", symbols);
+        log.debug("result symbols: {}", symbols);
         return symbols;
     }
 }

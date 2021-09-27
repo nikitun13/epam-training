@@ -41,7 +41,11 @@ class SymbolParserTest {
     public Stream<Arguments> dataForParse() {
         return Stream.of(
                 Arguments.of("hello", List.of(Symbol.valueOf('h'), Symbol.valueOf('e'), Symbol.valueOf('l'), Symbol.valueOf('l'), Symbol.valueOf('o'))),
+                Arguments.of("привет", List.of(Symbol.valueOf('п'), Symbol.valueOf('р'), Symbol.valueOf('и'), Symbol.valueOf('в'), Symbol.valueOf('е'), Symbol.valueOf('т'))),
                 Arguments.of("h", List.of(Symbol.valueOf('h'))),
+                Arguments.of("ё", List.of(Symbol.valueOf('ё'))),
+                Arguments.of("Ё", List.of(Symbol.valueOf('Ё'))),
+                Arguments.of("4", List.of(Symbol.valueOf('4'))),
                 Arguments.of(" ", List.of(Symbol.valueOf(' '))),
                 Arguments.of("?", List.of(Symbol.valueOf('?'))),
                 Arguments.of(";", List.of(Symbol.valueOf(';'))),
@@ -50,6 +54,8 @@ class SymbolParserTest {
                 Arguments.of("?!", List.of(Symbol.valueOf('?'), Symbol.valueOf('!'))),
                 Arguments.of("...", List.of(Symbol.valueOf('.'), Symbol.valueOf('.'), Symbol.valueOf('.'))),
                 Arguments.of("hel-lo", List.of(Symbol.valueOf('h'), Symbol.valueOf('e'), Symbol.valueOf('l'), Symbol.valueOf('-'), Symbol.valueOf('l'), Symbol.valueOf('o'))),
+                Arguments.of("hel7lo", List.of(Symbol.valueOf('h'), Symbol.valueOf('e'), Symbol.valueOf('l'), Symbol.valueOf('7'), Symbol.valueOf('l'), Symbol.valueOf('o'))),
+                Arguments.of("hel7ёж", List.of(Symbol.valueOf('h'), Symbol.valueOf('e'), Symbol.valueOf('l'), Symbol.valueOf('7'), Symbol.valueOf('ё'), Symbol.valueOf('ж'))),
                 Arguments.of("hel-lo its me!",
                         List.of(
                                 Symbol.valueOf('h'), Symbol.valueOf('e'), Symbol.valueOf('l'), Symbol.valueOf('-'), Symbol.valueOf('l'), Symbol.valueOf('o'), Symbol.valueOf(' '),
