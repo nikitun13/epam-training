@@ -25,4 +25,11 @@ public class Sentence extends AbstractTextComponent {
                 .map(TextComponent::collect)
                 .collect(joining(lexemeDelimiter));
     }
+
+    @Override
+    public String toString() {
+        return "Sentence{"
+                + "components=" + childrenComponents
+                + '}';
+    }
 }

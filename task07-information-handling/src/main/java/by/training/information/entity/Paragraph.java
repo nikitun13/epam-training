@@ -26,4 +26,11 @@ public class Paragraph extends AbstractTextComponent {
                 .map(TextComponent::collect)
                 .collect(joining(sentenceDelimiter));
     }
+
+    @Override
+    public String toString() {
+        return "Paragraph{"
+                + "components=" + childrenComponents
+                + '}';
+    }
 }

@@ -5,16 +5,16 @@ import java.util.List;
 import static java.util.stream.Collectors.joining;
 
 /**
- * The class {@code Lexeme} is an entity class
+ * The class {@code Expression} is an entity class
  * that extends {@link AbstractTextComponent} and
- * represents a lexeme entity.
+ * represents an expression entity.
  *
  * @author Nikita Romvanov
  * @see AbstractTextComponent
  */
-public class Lexeme extends AbstractTextComponent {
+public class Expression extends AbstractTextComponent {
 
-    public Lexeme(final List<? extends TextComponent> childrenComponents) {
+    public Expression(final List<? extends TextComponent> childrenComponents) {
         super(childrenComponents);
     }
 
@@ -27,7 +27,7 @@ public class Lexeme extends AbstractTextComponent {
 
     @Override
     public String toString() {
-        return "Lexeme{"
+        return "Expression{"
                 + "components=" + childrenComponents
                 + '}';
     }

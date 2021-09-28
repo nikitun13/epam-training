@@ -25,4 +25,11 @@ public class Text extends AbstractTextComponent {
                 .map(TextComponent::collect)
                 .collect(joining(paragraphDelimiter));
     }
+
+    @Override
+    public String toString() {
+        return "Text{"
+                + "components=" + childrenComponents
+                + '}';
+    }
 }
