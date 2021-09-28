@@ -8,20 +8,19 @@ import java.util.List;
  * Describes interface of a parser that parses
  * string to {@code TextComponents}.
  *
- * @param <T> concrete type of {@link TextComponent}.
  * @author Nikita Romanov
  * @see TextComponent
  */
 @FunctionalInterface
-public interface StringToTextComponentsParser<T extends TextComponent> {
+public interface StringToTextComponentsParser {
 
     /**
      * Parses {@code input} string to {@code TextComponents}.<br/>
      * Parsing result depends on the concrete {@code Parser}.
      *
      * @param input string to be parsed.
-     * @return parsed list of {@code T}.
+     * @return parsed list of {@code TextComponents}.
      * @see TextComponent
      */
-    List<T> parse(String input);
+    List<TextComponent> parse(String input);
 }

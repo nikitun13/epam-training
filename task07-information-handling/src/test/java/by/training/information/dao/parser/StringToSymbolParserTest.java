@@ -16,13 +16,13 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class SymbolParserTest {
+class StringToSymbolParserTest {
 
-    private SymbolParser parser;
+    private StringToSymbolParser parser;
 
     @BeforeAll
     void setUp() {
-        parser = new SymbolParser();
+        parser = new StringToSymbolParser();
     }
 
     @ParameterizedTest

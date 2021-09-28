@@ -8,27 +8,30 @@ import org.apache.logging.log4j.Logger;
 import java.util.List;
 
 /**
- * The class {@code SymbolParser} is a class
- * that implements {@link TextComponentParser}.<br/>
+ * The class {@code StringToSymbolParser} is a class
+ * that implements {@link StringToTextComponentsParser}.<br/>
  * Parses input string to {@code Symbols}.
  *
  * @author Nikita Romanov
- * @see TextComponentParser
+ * @see StringToTextComponentsParser
  * @see Symbol
  */
-public class SymbolParser implements TextComponentParser {
+public class StringToSymbolParser
+        implements StringToTextComponentsParser {
 
     /**
      * Logger.
      */
-    private static final Logger log = LogManager.getLogger(SymbolParser.class);
+    private static final Logger log
+            = LogManager.getLogger(StringToSymbolParser.class);
 
     @Override
-    public List<? extends TextComponent> parse(final String input) {
-        log.debug("received input for SymbolParser: {}", input);
-        List<Symbol> symbols = input.chars()
+    public List<TextComponent> parse(final String input) {
+        log.debug("received input for StringToSymbolParser: {}", input);
+        List<TextComponent> symbols = input.chars()
                 .mapToObj(codePoint -> (char) codePoint)
                 .map(Symbol::valueOf)
+                .map(TextComponent.class::cast)
                 .toList();
         log.debug("result symbols: {}", symbols);
         return symbols;
