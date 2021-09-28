@@ -29,7 +29,7 @@ class StringToExpressionParserTest {
     @ParameterizedTest
     @MethodSource("dataForParse")
     @Tag("parse")
-    void shouldParseInputStringToWords(String input, List<TextComponent> expected) {
+    void shouldParseInputStringToExpressions(String input, List<TextComponent> expected) {
         List<TextComponent> actual = parser.parse(input);
         assertEquals(expected, actual);
     }
