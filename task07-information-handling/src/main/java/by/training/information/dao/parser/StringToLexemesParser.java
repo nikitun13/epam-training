@@ -1,7 +1,8 @@
 package by.training.information.dao.parser;
 
-import by.training.information.entity.Lexeme;
 import by.training.information.entity.TextComponent;
+import by.training.information.entity.TextComposite;
+import by.training.information.entity.TextComposite.Type;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -15,7 +16,7 @@ import java.util.List;
  *
  * @author Nikita Romanov
  * @see StringToTextComponentsParser
- * @see Lexeme
+ * @see TextComposite
  */
 public class StringToLexemesParser extends AbstractChainParser {
 
@@ -36,7 +37,7 @@ public class StringToLexemesParser extends AbstractChainParser {
         String[] splitLexemes = input.split(LEXEME_DELIMITER_REGEX);
         List<TextComponent> lexemes = Arrays.stream(splitLexemes)
                 .map(nextParser::parse)
-                .map(Lexeme::new)
+                .map(childComponents -> new TextComposite(Type.LEXEME, childComponents))
                 .map(TextComponent.class::cast)
                 .toList();
         log.debug("result lexemes: {}", lexemes);

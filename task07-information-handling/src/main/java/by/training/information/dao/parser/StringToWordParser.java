@@ -1,7 +1,8 @@
 package by.training.information.dao.parser;
 
 import by.training.information.entity.TextComponent;
-import by.training.information.entity.Word;
+import by.training.information.entity.TextComposite;
+import by.training.information.entity.TextComposite.Type;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -17,7 +18,7 @@ import java.util.regex.Pattern;
  *
  * @author Nikita Romanov
  * @see StringToTextComponentsParser
- * @see Word
+ * @see TextComposite
  */
 public class StringToWordParser extends AbstractChainParser {
 
@@ -49,7 +50,7 @@ public class StringToWordParser extends AbstractChainParser {
             if (group.matches(WORD_REGEX)) {
                 log.debug("parse as word");
                 List<TextComponent> parsedWord = nextParser.parse(group);
-                Word word = new Word(parsedWord);
+                TextComposite word = new TextComposite(Type.WORD, parsedWord);
                 textComponents.add(word);
             } else {
                 log.debug("parse as other TextComponent");

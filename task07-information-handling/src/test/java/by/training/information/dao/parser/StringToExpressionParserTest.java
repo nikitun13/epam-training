@@ -1,8 +1,9 @@
 package by.training.information.dao.parser;
 
-import by.training.information.entity.Expression;
 import by.training.information.entity.Symbol;
 import by.training.information.entity.TextComponent;
+import by.training.information.entity.TextComposite;
+import by.training.information.entity.TextComposite.Type;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Tag;
@@ -42,9 +43,9 @@ class StringToExpressionParserTest {
     public Stream<Arguments> dataForParse() {
         return Stream.of(
                 Arguments.of("y", List.of((Symbol.valueOf('y')))),
-                Arguments.of("30>>>3", List.of(new Expression(List.of(Symbol.valueOf('3'), Symbol.valueOf('0'), Symbol.valueOf('>'), Symbol.valueOf('>'), Symbol.valueOf('>'), Symbol.valueOf('3'))))),
-                Arguments.of("30>>>3, ~6&9|(3&4)", List.of(new Expression(List.of(Symbol.valueOf('3'), Symbol.valueOf('0'), Symbol.valueOf('>'), Symbol.valueOf('>'), Symbol.valueOf('>'), Symbol.valueOf('3'))), Symbol.valueOf(','), new Expression(List.of(Symbol.valueOf('~'), Symbol.valueOf('6'), Symbol.valueOf('&'), Symbol.valueOf('9'), Symbol.valueOf('|'), Symbol.valueOf('('), Symbol.valueOf('3'), Symbol.valueOf('&'), Symbol.valueOf('4'), Symbol.valueOf(')'))))),
-                Arguments.of("30>>>3, abc ~6&9|(3&4)", List.of(new Expression(List.of(Symbol.valueOf('3'), Symbol.valueOf('0'), Symbol.valueOf('>'), Symbol.valueOf('>'), Symbol.valueOf('>'), Symbol.valueOf('3'))), Symbol.valueOf(','), Symbol.valueOf('a'), Symbol.valueOf('b'), Symbol.valueOf('c'), new Expression(List.of(Symbol.valueOf('~'), Symbol.valueOf('6'), Symbol.valueOf('&'), Symbol.valueOf('9'), Symbol.valueOf('|'), Symbol.valueOf('('), Symbol.valueOf('3'), Symbol.valueOf('&'), Symbol.valueOf('4'), Symbol.valueOf(')')))))
+                Arguments.of("30>>>3", List.of(new TextComposite(Type.EXPRESSION, List.of(Symbol.valueOf('3'), Symbol.valueOf('0'), Symbol.valueOf('>'), Symbol.valueOf('>'), Symbol.valueOf('>'), Symbol.valueOf('3'))))),
+                Arguments.of("30>>>3, ~6&9|(3&4)", List.of(new TextComposite(Type.EXPRESSION, List.of(Symbol.valueOf('3'), Symbol.valueOf('0'), Symbol.valueOf('>'), Symbol.valueOf('>'), Symbol.valueOf('>'), Symbol.valueOf('3'))), Symbol.valueOf(','), new TextComposite(Type.EXPRESSION, List.of(Symbol.valueOf('~'), Symbol.valueOf('6'), Symbol.valueOf('&'), Symbol.valueOf('9'), Symbol.valueOf('|'), Symbol.valueOf('('), Symbol.valueOf('3'), Symbol.valueOf('&'), Symbol.valueOf('4'), Symbol.valueOf(')'))))),
+                Arguments.of("30>>>3, abc ~6&9|(3&4)", List.of(new TextComposite(Type.EXPRESSION, List.of(Symbol.valueOf('3'), Symbol.valueOf('0'), Symbol.valueOf('>'), Symbol.valueOf('>'), Symbol.valueOf('>'), Symbol.valueOf('3'))), Symbol.valueOf(','), Symbol.valueOf('a'), Symbol.valueOf('b'), Symbol.valueOf('c'), new TextComposite(Type.EXPRESSION, List.of(Symbol.valueOf('~'), Symbol.valueOf('6'), Symbol.valueOf('&'), Symbol.valueOf('9'), Symbol.valueOf('|'), Symbol.valueOf('('), Symbol.valueOf('3'), Symbol.valueOf('&'), Symbol.valueOf('4'), Symbol.valueOf(')')))))
         );
     }
 }

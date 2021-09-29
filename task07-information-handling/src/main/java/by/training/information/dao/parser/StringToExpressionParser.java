@@ -1,7 +1,8 @@
 package by.training.information.dao.parser;
 
-import by.training.information.entity.Expression;
 import by.training.information.entity.TextComponent;
+import by.training.information.entity.TextComposite;
+import by.training.information.entity.TextComposite.Type;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -17,7 +18,7 @@ import java.util.regex.Pattern;
  *
  * @author Nikita Romanov
  * @see StringToTextComponentsParser
- * @see Expression
+ * @see TextComposite
  */
 public class StringToExpressionParser extends AbstractChainParser {
 
@@ -51,8 +52,8 @@ public class StringToExpressionParser extends AbstractChainParser {
             if (group.matches(EXPRESSION_REGEX)) {
                 log.debug("parse as expression");
                 List<TextComponent> parsedExpression = nextParser.parse(group);
-                Expression word = new Expression(parsedExpression);
-                textComponents.add(word);
+                TextComposite expression = new TextComposite(Type.EXPRESSION, parsedExpression);
+                textComponents.add(expression);
             } else {
                 log.debug("parse as other TextComponent");
                 List<TextComponent> parsedComponents = nextParser.parse(group);
