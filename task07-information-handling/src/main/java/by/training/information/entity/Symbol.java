@@ -1,8 +1,6 @@
 package by.training.information.entity;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * The class {@code Symbol} is an entity class
@@ -35,6 +33,21 @@ public final class Symbol implements TextComponent {
     @Override
     public String collect() {
         return String.valueOf(value);
+    }
+
+    @Override
+    public List<TextComponent> getChildrenComponents() {
+        return Collections.emptyList();
+    }
+
+    @Override
+    public Type getType() {
+        return Type.SYMBOL;
+    }
+
+    @Override
+    public TextComponent copyComponent() {
+        return this;
     }
 
     /**

@@ -6,8 +6,8 @@ import by.training.information.dao.parser.*;
 import by.training.information.dao.reader.Reader;
 import by.training.information.dao.reader.ReaderImpl;
 import by.training.information.entity.TextComponent;
+import by.training.information.entity.TextComponent.Type;
 import by.training.information.entity.TextComposite;
-import by.training.information.entity.TextComposite.Type;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

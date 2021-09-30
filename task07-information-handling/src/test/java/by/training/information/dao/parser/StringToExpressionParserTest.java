@@ -2,8 +2,8 @@ package by.training.information.dao.parser;
 
 import by.training.information.entity.Symbol;
 import by.training.information.entity.TextComponent;
+import by.training.information.entity.TextComponent.Type;
 import by.training.information.entity.TextComposite;
-import by.training.information.entity.TextComposite.Type;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Tag;

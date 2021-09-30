@@ -1,8 +1,8 @@
 package by.training.information.dao.parser;
 
 import by.training.information.entity.TextComponent;
+import by.training.information.entity.TextComponent.Type;
 import by.training.information.entity.TextComposite;
-import by.training.information.entity.TextComposite.Type;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -46,7 +46,8 @@ public class StringToSentencesParser extends AbstractChainParser {
         }
         List<TextComponent> sentences = stringsSentences.stream()
                 .map(nextParser::parse)
-                .map(childComponents -> new TextComposite(Type.SENTENCE, childComponents))
+                .map(childComponents -> new TextComposite(
+                        Type.SENTENCE, childComponents))
                 .map(TextComponent.class::cast)
                 .toList();
         log.debug("result sentences: {}", sentences);

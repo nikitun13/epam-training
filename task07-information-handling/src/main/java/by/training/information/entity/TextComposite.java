@@ -1,5 +1,6 @@
 package by.training.information.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,27 +15,42 @@ public class TextComposite implements TextComponent {
     /**
      * List of children components.
      */
-    private final List<? extends TextComponent> childrenComponents;
+    private final List<TextComponent> childrenComponents;
 
+    @SuppressWarnings("unchecked")
     public TextComposite(final Type type,
                          final List<? extends TextComponent> childrenComponents) {
         this.type = type;
-        this.childrenComponents = childrenComponents;
+        this.childrenComponents = (List<TextComponent>) childrenComponents;
     }
 
     @Override
     public String collect() {
+        String delimiter = type.getChildDelimiter();
+        String prefix = type.getPrefix();
+        String suffix = "";
         return childrenComponents.stream()
                 .map(TextComponent::collect)
-                .collect(joining(type.childDelimiter, type.prefix, ""));
+                .collect(joining(delimiter, prefix, suffix));
     }
 
+    @Override
     public Type getType() {
         return type;
     }
 
+    @Override
+    public TextComponent copyComponent() {
+        List<TextComponent> newChildrenComponents = new ArrayList<>();
+        for (TextComponent component : childrenComponents) {
+            newChildrenComponents.add(component.copyComponent());
+        }
+        return new TextComposite(type, newChildrenComponents);
+    }
+
+    @Override
     public List<TextComponent> getChildrenComponents() {
-        return List.copyOf(childrenComponents);
+        return childrenComponents;
     }
 
     @Override
@@ -61,44 +77,5 @@ public class TextComposite implements TextComponent {
                 + "type=" + type
                 + ", childrenComponents=" + childrenComponents
                 + '}';
-    }
-
-    public enum Type {
-
-        TEXT("\n"),
-        PARAGRAPH(" ", "    "),
-        SENTENCE(" "),
-        LEXEME(),
-        WORD(),
-        EXPRESSION();
-
-        /**
-         * Default delimiter or prefix.
-         */
-        private static final String DEFAULT_SEPARATOR = "";
-
-        private final String childDelimiter;
-        private final String prefix;
-
-        Type() {
-            this(DEFAULT_SEPARATOR, DEFAULT_SEPARATOR);
-        }
-
-        Type(final String childDelimiter) {
-            this(childDelimiter, DEFAULT_SEPARATOR);
-        }
-
-        Type(final String childDelimiter, final String prefix) {
-            this.childDelimiter = childDelimiter;
-            this.prefix = prefix;
-        }
-
-        public String getChildDelimiter() {
-            return childDelimiter;
-        }
-
-        public String getPrefix() {
-            return prefix;
-        }
     }
 }
