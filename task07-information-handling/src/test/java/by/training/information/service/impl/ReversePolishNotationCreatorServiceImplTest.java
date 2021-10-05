@@ -44,7 +44,7 @@ class ReversePolishNotationCreatorServiceImplTest {
     @NullAndEmptySource
     @MethodSource("invalidDataForCreateNotation")
     @Tag("createNotation")
-    void createNotation(String expression) {
+    void shouldThrowServiceExceptionIfInvalidDataReceived(String expression) {
         assertThrows(ServiceException.class,
                 () -> service.createNotation(expression),
                 () -> "must throw " + ServiceException.class + " for invalid input: " + expression
