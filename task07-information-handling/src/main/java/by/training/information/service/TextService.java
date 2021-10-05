@@ -1,5 +1,6 @@
 package by.training.information.service;
 
+import by.training.information.entity.TextComponent;
 import by.training.information.entity.TextComposite;
 
 /**
@@ -21,5 +22,5 @@ public interface TextService {
      *                          or {@code pathToFile}
      *                          is {@code null} or invalid.
      */
-    TextComposite readTextFromFile(String pathToFile) throws ServiceException;
+    TextComponent readTextFromFile(String pathToFile) throws ServiceException;
 }

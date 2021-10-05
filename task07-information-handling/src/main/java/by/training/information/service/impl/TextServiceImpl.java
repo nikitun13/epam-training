@@ -3,7 +3,7 @@ package by.training.information.service.impl;
 import by.training.information.dao.DaoException;
 import by.training.information.dao.DaoFactory;
 import by.training.information.dao.TextDao;
-import by.training.information.entity.TextComposite;
+import by.training.information.entity.TextComponent;
 import by.training.information.service.ServiceException;
 import by.training.information.service.TextService;
 import org.apache.logging.log4j.LogManager;
@@ -33,7 +33,7 @@ public class TextServiceImpl implements TextService {
     private final TextDao dao = DaoFactory.getInstance().getTextDao();
 
     @Override
-    public TextComposite readTextFromFile(final String pathToFile)
+    public TextComponent readTextFromFile(final String pathToFile)
             throws ServiceException {
         log.debug("received pathToFile: {}", pathToFile);
         if (pathToFile == null) {

@@ -2,11 +2,7 @@ package by.training.information.controller;
 
 import by.training.information.entity.Symbol;
 import by.training.information.entity.TextComponent;
-import by.training.information.entity.TextComposite;
-import by.training.information.service.ServiceException;
-import by.training.information.service.ServiceFactory;
-import by.training.information.service.TextService;
-import by.training.information.service.TextSortingService;
+import by.training.information.service.*;
 import by.training.information.view.View;
 import by.training.information.view.ViewFactory;
 import org.apache.logging.log4j.LogManager;
@@ -26,6 +22,7 @@ public class ControllerImpl implements Controller {
     private final View view;
     private final TextService textService;
     private final TextSortingService textSortingService;
+    private final ProxyExpressionsInTextService proxyExpressionsInTextService;
     private final String pathToFile;
     private final Symbol symbolForSorting;
 
@@ -34,6 +31,7 @@ public class ControllerImpl implements Controller {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         textService = serviceFactory.getTextService();
         textSortingService = serviceFactory.getTextSortingService();
+        proxyExpressionsInTextService = serviceFactory.getProxyExpressionsInTextService();
         this.pathToFile = pathToFile;
         this.symbolForSorting = symbolForSorting;
     }
@@ -41,9 +39,13 @@ public class ControllerImpl implements Controller {
     @Override
     public void run() {
         try {
-            TextComposite inputText = textService.readTextFromFile(pathToFile);
+            TextComponent inputText = textService.readTextFromFile(pathToFile);
             view.println("Input text:");
             view.println(inputText.collect());
+
+            TextComponent newText = proxyExpressionsInTextService.proxyExpressions(inputText);
+            view.println("Collect with calculating expressions:");
+            view.println(newText.collect());
 
             TextComponent sortedParagraphsByNumberOfSentences
                     = textSortingService.sortParagraphsByNumberOfSentences(inputText);

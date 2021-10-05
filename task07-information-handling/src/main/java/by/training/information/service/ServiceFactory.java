@@ -1,7 +1,6 @@
 package by.training.information.service;
 
-import by.training.information.service.impl.TextServiceImpl;
-import by.training.information.service.impl.TextSortingServiceImpl;
+import by.training.information.service.impl.*;
 
 /**
  * The class {@code ServiceFactory} is utility class
@@ -18,10 +17,16 @@ public final class ServiceFactory {
 
     private final TextService textService;
     private final TextSortingService textSortingService;
+    private final ReversePolishNotationCreatorService polishNotationCreatorService;
+    private final PolishNotationCalculatorService polishNotationCalculatorService;
+    private final ProxyExpressionsInTextService proxyExpressionsInTextService;
 
     private ServiceFactory() {
         textService = new TextServiceImpl();
         textSortingService = new TextSortingServiceImpl();
+        polishNotationCreatorService = new ReversePolishNotationCreatorServiceImpl();
+        polishNotationCalculatorService = new PolishNotationCalculatorServiceImpl();
+        proxyExpressionsInTextService = new ProxyExpressionsInTextServiceImpl();
     }
 
     /**
@@ -42,5 +47,17 @@ public final class ServiceFactory {
 
     public TextSortingService getTextSortingService() {
         return textSortingService;
+    }
+
+    public ReversePolishNotationCreatorService getPolishNotationCreatorService() {
+        return polishNotationCreatorService;
+    }
+
+    public PolishNotationCalculatorService getPolishNotationCalculatorService() {
+        return polishNotationCalculatorService;
+    }
+
+    public ProxyExpressionsInTextService getProxyExpressionsInTextService() {
+        return proxyExpressionsInTextService;
     }
 }

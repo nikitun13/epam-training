@@ -2,7 +2,7 @@ package by.training.information.service.impl;
 
 import by.training.information.dao.DaoException;
 import by.training.information.dao.reader.ReaderImpl;
-import by.training.information.entity.TextComposite;
+import by.training.information.entity.TextComponent;
 import by.training.information.service.ServiceException;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -56,7 +56,7 @@ class TextServiceImplTest {
         ReaderImpl reader = ReaderImpl.getInstance();
         String expected = String.join("\n", reader.readAllLines(path));
 
-        TextComposite text = service.readTextFromFile(pathToFile);
+        TextComponent text = service.readTextFromFile(pathToFile);
         String actual = text.collect();
 
         assertEquals(expected, actual);
