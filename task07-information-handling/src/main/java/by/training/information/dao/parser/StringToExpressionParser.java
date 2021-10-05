@@ -33,7 +33,7 @@ public class StringToExpressionParser extends AbstractChainParser {
      */
     private static final String EXPRESSION_REGEX
             = "((\\(*~?\\d+([<]{2}|[>]{2,3}|[\\^&|]))+"
-            + "(~?\\d+\\)*([<]{2}|[>]{2,3}|[\\^&|])?)+)";
+            + "(~?\\d+\\)*([<]{2}|[>]{2,3}|[\\^&|])?)+)+";
     /**
      * Groups for other elements that doesn't
      * match expression pattern for further parsing.
