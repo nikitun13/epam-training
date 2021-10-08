@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://training.by/gems"
+        xmlns:tns="http://training.by/gems"
+        elementFormDefault="qualified">
+    <element name="gems">
+        <complexType>
+            <sequence>
+                <element ref="tns:gem" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="gem" type="tns:Gem"/>
+    <element name="synthetic-gem" type="tns:SyntheticGem" substitutionGroup="tns:gem"/>
+
+    <complexType name="Gem">
+        <sequence>
+            <element name="name">
+                <simpleType>
+                    <restriction base="string">
+                        <pattern value="[A-Z][a-z]{1,14}"/>
+                    </restriction>
+                </simpleType>
+            </element>
+
+            <element name="preciousness">
+                <simpleType>
+                    <restriction base="string">
+                        <enumeration value="precious"/>
+                        <enumeration value="semiprecious"/>
+                    </restriction>
+                </simpleType>
+            </element>
+
+            <element name="origin" type="string"/>
+
+            <element name="visual-parameters" type="tns:VisualParameters"/>
+
+            <element name="value" type="double"/>
+
+            <element name="date" type="date"/>
+        </sequence>
+
+        <attribute name="id" use="required">
+            <simpleType>
+                <restriction base="ID">
+                    <pattern value="(x)\d{1,19}"/>
+                </restriction>
+            </simpleType>
+        </attribute>
+    </complexType>
+
+    <complexType name="VisualParameters">
+        <sequence>
+            <element name="color">
+                <simpleType>
+                    <restriction base="string">
+                        <enumeration value="red"/>
+                        <enumeration value="green"/>
+                        <enumeration value="white"/>
+                        <enumeration value="blue"/>
+                        <enumeration value="yellow"/>
+                    </restriction>
+                </simpleType>
+            </element>
+
+            <element name="transparency">
+                <complexType>
+                    <attribute name="value" default="50">
+                        <simpleType>
+                            <restriction base="int">
+                                <minInclusive value="0"/>
+                                <maxInclusive value="100"/>
+                            </restriction>
+                        </simpleType>
+                    </attribute>
+                </complexType>
+            </element>
+
+            <element name="facets-number">
+                <complexType>
+                    <attribute name="value" use="required">
+                        <simpleType>
+                            <restriction base="int">
+                                <minInclusive value="4"/>
+                                <maxInclusive value="15"/>
+                            </restriction>
+                        </simpleType>
+                    </attribute>
+                </complexType>
+            </element>
+        </sequence>
+    </complexType>
+
+    <complexType name="SyntheticGem">
+        <complexContent>
+            <extension base="tns:Gem">
+                <sequence>
+                    <element name="laboratory" type="string"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+</schema>
