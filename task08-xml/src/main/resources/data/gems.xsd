@@ -37,7 +37,14 @@
 
             <element name="visual-parameters" type="tns:VisualParameters"/>
 
-            <element name="value" type="double"/>
+            <element name="value">
+                <simpleType>
+                    <restriction base="double">
+                        <minInclusive value="0"/>
+                        <maxInclusive value="1000"/>
+                    </restriction>
+                </simpleType>
+            </element>
 
             <element name="date" type="date"/>
         </sequence>
