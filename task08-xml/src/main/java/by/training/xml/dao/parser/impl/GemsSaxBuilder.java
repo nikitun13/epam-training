@@ -53,7 +53,6 @@ public class GemsSaxBuilder implements GemsBuilder {
                     "http://apache.org/xml/features/disallow-doctype-decl",
                     true
             );
-            factory.setValidating(false);
             parser = factory.newSAXParser();
         } catch (ParserConfigurationException
                 | SAXException e) {
@@ -189,32 +188,6 @@ public class GemsSaxBuilder implements GemsBuilder {
         @Override
         public void fatalError(final SAXParseException e) throws SAXException {
             log.fatal(e);
-        }
-
-        private enum GemsXmlTag {
-            GEMS("gems"),
-            GEM("gem"),
-            SYNTHETIC_GEM("synthetic-gem"),
-            NAME("name"),
-            PRECIOUSNESS("preciousness"),
-            ORIGIN("origin"),
-            COLOR("color"),
-            VALUE(VALUE_KEY),
-            LABORATORY("laboratory"),
-            DATE("date"),
-            VISUAL_PARAMETERS("visual-parameters"),
-            TRANSPARENCY("transparency"),
-            FACETS_NUMBER("facets-number");
-
-            private final String value;
-
-            GemsXmlTag(final String value) {
-                this.value = value;
-            }
-
-            public String getValue() {
-                return value;
-            }
         }
     }
 }
