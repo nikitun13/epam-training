@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<gems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns="http://training.by/gems"
+      xsi:schemaLocation="http://training.by/gems ../gems.xsd">
+    <gem id="x1">
+        <name>Diamond</name>
+        <preciousness>precious</preciousness>
+        <origin>Australia</origin>
+        <visual-parameters>
+            <color>white</color>
+            <transparency value="-1"/>
+            <facets-number value="10"/>
+        </visual-parameters>
+        <value>5</value>
+        <date>2021-10-08</date>
+    </gem>
+
+    <gem id="x2">
+        <name>Emerald</name>
+        <preciousness>precious</preciousness>
+        <origin>Brazil</origin>
+        <visual-parameters>
+            <color>green</color>
+            <transparency value="10"/>
+            <facets-number value="5"/>
+        </visual-parameters>
+        <value>3.5</value>
+        <date>2021-10-05</date>
+    </gem>
+
+    <synthetic-gem id="x3">
+        <name>Ruby</name>
+        <preciousness>precious</preciousness>
+        <origin>India</origin>
+        <visual-parameters>
+            <color>red</color>
+            <transparency/>
+            <facets-number value="15"/>
+        </visual-parameters>
+        <value>10</value>
+        <date>2021-10-05</date>
+        <laboratory>Gemstone Laboratory</laboratory>
+    </synthetic-gem>
+
+    <synthetic-gem id="x4">
+        <name>Aquamarine</name>
+        <preciousness>semiprecious</preciousness>
+        <origin>India</origin>
+        <visual-parameters>
+            <color>blue</color>
+            <transparency value="60"/>
+            <facets-number value="7"/>
+        </visual-parameters>
+        <value>5</value>
+        <date>2021-10-03</date>
+        <laboratory>Gemstone Laboratory</laboratory>
+    </synthetic-gem>
+</gems>

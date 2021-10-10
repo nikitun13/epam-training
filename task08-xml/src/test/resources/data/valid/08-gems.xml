@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<gems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns="http://training.by/gems"
+      xsi:schemaLocation="http://training.by/gems ../gems.xsd">
+    <gem id="x5">
+        <name>Heliodor</name>
+        <preciousness>semiprecious</preciousness>
+        <origin>Russia</origin>
+        <visual-parameters>
+            <color>yellow</color>
+            <transparency value="5"/>
+            <facets-number value="8"/>
+        </visual-parameters>
+        <value>7</value>
+        <date>2021-10-09</date>
+    </gem>
+</gems>

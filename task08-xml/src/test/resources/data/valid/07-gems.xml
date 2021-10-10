@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<gems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns="http://training.by/gems"
+      xsi:schemaLocation="http://training.by/gems ../gems.xsd">
+    <gem id="x1">
+        <name>Diamond</name>
+        <preciousness>precious</preciousness>
+        <origin>Australia</origin>
+        <visual-parameters>
+            <color>white</color>
+            <transparency value="40"/>
+            <facets-number value="10"/>
+        </visual-parameters>
+        <value>5</value>
+        <date>2021-10-08</date>
+    </gem>
+</gems>

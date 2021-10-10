@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<gemss xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://training.by/gems"
+       xsi:schemaLocation="http://training.by/gems ../gems.xsd">
+</gemss>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<gems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns="http://training.by/gems"
+      xsi:schemaLocation="http://training.by/gems ../gems.xsd">
+    <synthetic-gem id="x3">
+        <name>ruby</name>
+        <preciousness>precious</preciousness>
+        <origin>India</origin>
+        <visual-parameters>
+            <color>red</color>
+            <transparency/>
+            <facets-number value="15"/>
+        </visual-parameters>
+        <value>10</value>
+        <date>2021-10-05</date>
+        <laboratory>Gemstone Laboratory</laboratory>
+    </synthetic-gem>
+
+    <synthetic-gem id="x4">
+        <name>Aquamarine</name>
+        <preciousness>semiprecious</preciousness>
+        <origin>India</origin>
+        <visual-parameters>
+            <color>blue</color>
+            <transparency value="60"/>
+            <facets-number value="7"/>
+        </visual-parameters>
+        <value>5</value>
+        <date>2021-10-03</date>
+        <laboratory>Gemstone Laboratory</laboratory>
+    </synthetic-gem>
+
+    <synthetic-gem id="x8">
+        <name>Diamond</name>
+        <preciousness>precious</preciousness>
+        <origin>Britain</origin>
+        <visual-parameters>
+            <color>white</color>
+            <transparency/>
+            <facets-number value="11"/>
+        </visual-parameters>
+        <value>13</value>
+        <date>2021-10-04</date>
+        <laboratory>De Beers</laboratory>
+    </synthetic-gem>
+
+    <synthetic-gem id="x9">
+        <name>Emerald</name>
+        <preciousness>precious</preciousness>
+        <origin>Russia</origin>
+        <visual-parameters>
+            <color>green</color>
+            <transparency/>
+            <facets-number value="14"/>
+        </visual-parameters>
+        <value>16</value>
+        <date>2021-10-06</date>
+        <laboratory>Alrosa</laboratory>
+    </synthetic-gem>
+
+    <synthetic-gem id="x13">
+        <name>Cordierite</name>
+        <preciousness>semiprecious</preciousness>
+        <origin>USA</origin>
+        <visual-parameters>
+            <color>blue</color>
+            <transparency/>
+            <facets-number value="4"/>
+        </visual-parameters>
+        <value>7</value>
+        <date>2021-10-11</date>
+        <laboratory>GIA Gem Lab</laboratory>
+    </synthetic-gem>
+
+    <synthetic-gem id="x14">
+        <name>Rhodochrosite</name>
+        <preciousness>semiprecious</preciousness>
+        <origin>Germany</origin>
+        <visual-parameters>
+            <color>red</color>
+            <transparency value="30"/>
+            <facets-number value="5"/>
+        </visual-parameters>
+        <value>1</value>
+        <date>2021-10-07</date>
+        <laboratory>Gubelin Gem Lab</laboratory>
+    </synthetic-gem>
+
+    <synthetic-gem id="x16">
+        <name>Emerald</name>
+        <preciousness>precious</preciousness>
+        <origin>Switzerland</origin>
+        <visual-parameters>
+            <color>green</color>
+            <transparency/>
+            <facets-number value="6"/>
+        </visual-parameters>
+        <value>5</value>
+        <date>2021-10-13</date>
+        <laboratory>SSEF Lab</laboratory>
+    </synthetic-gem>
+</gems>
