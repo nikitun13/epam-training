@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<gems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns="http://training.by/gems"
+      xsi:schemaLocation="http://training.by/gems ../gems.xsd">
+    <gem id="x2">
+        <name>Emerald</name>
+        <preciousness>precious</preciousness>
+        <origin>Brazil</origin>
+        <visual-parameters>
+            <color>green</color>
+            <transparency value="10"/>
+            <facets-number value="5"/>
+        </visual-parameters>
+        <value>3.5</value>
+        <date>2021-10-05</date>
+    </gem>
+</gems>

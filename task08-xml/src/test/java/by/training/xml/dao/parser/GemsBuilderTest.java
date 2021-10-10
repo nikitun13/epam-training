@@ -2,6 +2,8 @@ package by.training.xml.dao.parser;
 
 import by.training.xml.dao.DaoException;
 import by.training.xml.dao.parser.impl.GemsDomBuilder;
+import by.training.xml.dao.parser.impl.GemsSaxBuilder;
+import by.training.xml.dao.parser.impl.GemsStaxBuilder;
 import by.training.xml.entity.Gem;
 import by.training.xml.entity.SyntheticGem;
 import by.training.xml.entity.VisualParameters;
@@ -37,7 +39,9 @@ public class GemsBuilderTest {
     @DataProvider(name = "builderImplementations")
     public Object[][] createBuilderImplementations() {
         return new Object[][]{
-                {new GemsDomBuilder()}
+                {new GemsDomBuilder()},
+                {new GemsSaxBuilder()},
+                {new GemsStaxBuilder()}
         };
     }
 
@@ -45,11 +49,14 @@ public class GemsBuilderTest {
     public static Object[][] validDataForBuild() {
         Gem diamond = new Gem(1, "Diamond", Gem.Preciousness.PRECIOUS, "Australia", new VisualParameters(VisualParameters.Color.WHITE, 40, 10), 5d, LocalDate.parse("2021-10-08"));
         Gem emerald = new SyntheticGem(16, "Emerald", Gem.Preciousness.PRECIOUS, "Switzerland", new VisualParameters(VisualParameters.Color.GREEN, 50, 6), 5d, LocalDate.parse("2021-10-13"), "SSEF Lab");
+        Gem secondEmerald = new Gem(2, "Emerald", Gem.Preciousness.PRECIOUS, "Brazil", new VisualParameters(VisualParameters.Color.GREEN, 10, 5), 3.5, LocalDate.parse("2021-10-05"));
         return new Object[][]{
                 {"data/valid/07-gems.xml", List.of(diamond)},
                 {"data/valid/09-gems.xml", List.of(emerald)},
                 {"data/valid/03-gems.xml", Collections.emptyList()},
-                {"data/valid/10-gems.xml", List.of(diamond, emerald)}
+                {"data/valid/10-gems.xml", List.of(diamond, emerald)},
+                {"data/valid/11-gems.xml", List.of(diamond, emerald, secondEmerald)},
+                {"data/valid/12-gems.xml", List.of(secondEmerald)},
         };
     }
 
@@ -74,8 +81,15 @@ public class GemsBuilderTest {
     @Test(description = "test build method if invalid data received",
             dataProvider = "invalidDataForBuild",
             expectedExceptions = DaoException.class)
-    public void testInvalidDataFroBuild(String path) throws DaoException {
+    public void testInvalidDataForBuild(String path) throws DaoException {
         builder.build(path);
+        fail("must throw " + DaoException.class.getName());
+    }
+
+    @Test(description = "test wrong path for build method",
+            expectedExceptions = DaoException.class)
+    public void testWrongPathForBuild() throws DaoException {
+        builder.build("invalid/path.xml");
         fail("must throw " + DaoException.class.getName());
     }
 }
