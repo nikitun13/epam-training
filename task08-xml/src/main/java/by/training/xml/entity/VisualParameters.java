@@ -2,11 +2,26 @@ package by.training.xml.entity;
 
 import java.util.Objects;
 
+/**
+ * The class {@code VisualParameters} is an entity class
+ * that represents visual parameters of gemstones.
+ *
+ * @author Nikita Romanov
+ */
 public class VisualParameters {
 
     private Color color;
     private int transparency;
     private int facetsNumber;
+
+    public VisualParameters() {
+    }
+
+    public VisualParameters(Color color, int transparency, int facetsNumber) {
+        this.color = color;
+        this.transparency = transparency;
+        this.facetsNumber = facetsNumber;
+    }
 
     public Color getColor() {
         return color;
@@ -52,5 +67,10 @@ public class VisualParameters {
                 ", transparency=" + transparency +
                 ", facetsNumber=" + facetsNumber +
                 '}';
+    }
+
+    public enum Color {
+
+        RED, GREEN, WHITE, BLUE, YELLOW
     }
 }

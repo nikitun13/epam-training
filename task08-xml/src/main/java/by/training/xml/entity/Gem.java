@@ -3,19 +3,30 @@ package by.training.xml.entity;
 import java.time.LocalDate;
 import java.util.Objects;
 
+/**
+ * The class {@code Gem} is an entity class
+ * that represents gemstone entity.
+ *
+ * @author Nikita Romanov
+ */
 public class Gem {
 
-    protected String name;
-    protected Preciousness preciousness;
-    protected String origin;
-    protected VisualParameters parameters;
-    protected double value;
-    protected LocalDate date;
+    private long id;
+    private String name;
+    private Preciousness preciousness;
+    private String origin;
+    private VisualParameters parameters;
+    private double value;
+    private LocalDate date;
 
     public Gem() {
     }
 
-    public Gem(String name, Preciousness preciousness, String origin, VisualParameters parameters, double value, LocalDate date) {
+    public Gem(final long id, final String name,
+               final Preciousness preciousness, final String origin,
+               final VisualParameters parameters, final double value,
+               final LocalDate date) {
+        this.id = id;
         this.name = name;
         this.preciousness = preciousness;
         this.origin = origin;
@@ -24,11 +35,19 @@ public class Gem {
         this.date = date;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(final long id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -36,7 +55,7 @@ public class Gem {
         return preciousness;
     }
 
-    public void setPreciousness(Preciousness preciousness) {
+    public void setPreciousness(final Preciousness preciousness) {
         this.preciousness = preciousness;
     }
 
@@ -44,7 +63,7 @@ public class Gem {
         return origin;
     }
 
-    public void setOrigin(String origin) {
+    public void setOrigin(final String origin) {
         this.origin = origin;
     }
 
@@ -52,7 +71,7 @@ public class Gem {
         return parameters;
     }
 
-    public void setParameters(VisualParameters parameters) {
+    public void setParameters(final VisualParameters parameters) {
         this.parameters = parameters;
     }
 
@@ -60,7 +79,7 @@ public class Gem {
         return value;
     }
 
-    public void setValue(double value) {
+    public void setValue(final double value) {
         this.value = value;
     }
 
@@ -68,32 +87,45 @@ public class Gem {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(final LocalDate date) {
         this.date = date;
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Gem gem = (Gem) o;
-        return Double.compare(gem.value, value) == 0 && Objects.equals(name, gem.name) && preciousness == gem.preciousness && Objects.equals(origin, gem.origin) && Objects.equals(parameters, gem.parameters) && Objects.equals(date, gem.date);
+        return id == gem.id
+                && Double.compare(gem.value, value) == 0
+                && Objects.equals(name, gem.name)
+                && preciousness == gem.preciousness
+                && Objects.equals(origin, gem.origin)
+                && Objects.equals(parameters, gem.parameters)
+                && Objects.equals(date, gem.date);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, preciousness, origin, parameters, value, date);
+        return Objects.hash(id, name, preciousness, origin,
+                parameters, value, date
+        );
     }
 
     @Override
     public String toString() {
         return "Gem{"
-                + "name='" + name + '\''
+                + "id=" + id
+                + ", name='" + name + '\''
                 + ", preciousness=" + preciousness
                 + ", origin='" + origin + '\''
                 + ", parameters=" + parameters
                 + ", value=" + value
                 + ", date=" + date
                 + '}';
+    }
+
+    public enum Preciousness {
+        PRECIOUS, SEMIPRECIOUS
     }
 }
