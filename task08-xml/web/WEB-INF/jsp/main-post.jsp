@@ -1,14 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
-<head lang="en">
+<html lang="en">
+<head>
     <title>Main page</title>
 </head>
 <body>
+<a href="${pageContext.request.contextPath}/">
+    <button type="button">Back</button>
+</a>
 <h1>Gems list:</h1>
 <table border="1">
-    <caption>Gems from XML file</caption>
     <tr>
         <th>id</th>
         <th>name</th>

@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html>
-<head lang="en">
+<html lang="en">
+<head>
     <title>Main page</title>
 </head>
 <body>
@@ -17,7 +17,7 @@
             <option value="stax">StAX</option>
         </select>
     </label><br>
-    <button type="submit">Send</button>
+    <button type="submit">Parse</button>
 </form>
 </body>
 </html>
